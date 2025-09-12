@@ -56,6 +56,7 @@ export const monoidFold =
 /**
  * Fold single level in a tree of type `A` using a predicate of `A` and
  * a boolean monoid.
+ * @category fold
  */
 export const predicateFold =
   (M: Monoid.Monoid<boolean>) =>

@@ -30,6 +30,7 @@ export const unzip: <A, B>(t: Tree<[A, B]>) => [Tree<A>, Tree<B>] = tree =>
 /**
  * Unzip a single level in a tree of `[A, B]` into a pair of trees of types `A`
  * and `B`.
+ * @category fold
  */
 export const unzipFold = <A, B>(
   t: TreeF.TreeF<[A, B], [Tree<A>, Tree<B>]>,
