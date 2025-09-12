@@ -1,3 +1,7 @@
+/**
+ * Tree Covariant.
+ * @packageDocumentation
+ */
 import {Covariant as CO} from '@effect/typeclass'
 import {Effect, flow, Function, pipe} from 'effect'
 import {withForest, branch, leaf, match} from '../tree/index.js'

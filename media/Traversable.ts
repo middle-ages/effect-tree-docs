@@ -1,3 +1,7 @@
+/**
+ * Tree Traversable.
+ * @packageDocumentation
+ */
 import {
   Applicative,
   SemiApplicative,

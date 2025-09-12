@@ -1,3 +1,7 @@
+/**
+ * Zip trees.
+ * @packageDocumentation
+ */
 import {
   fixTree,
   getNode,

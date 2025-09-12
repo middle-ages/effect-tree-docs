@@ -1,3 +1,7 @@
+/**
+ * Tree Applicative.
+ * @packageDocumentation
+ */
 import {
   Applicative as AP,
   Monoid,
