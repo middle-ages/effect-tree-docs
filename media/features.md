@@ -19,7 +19,7 @@
 
 Encode/decode losslessly to/from different tree encodings.
 
-| Name           |     Codec Source Foldr         |
+| Name           |          Codec Source          |
 |----------------|--------------------------------|
 | Nested arrays  | [source](../src/codec/arrays)  |
 | Edge lists     | [source](../src/codec/edges)   |
