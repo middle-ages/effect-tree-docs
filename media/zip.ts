@@ -86,6 +86,14 @@ export const zipWithEffect =
     )
   }
 
+/**
+ * Zip a pair of trees cropping to the smallest degree and depth, and apply the
+ * given function.
+ *
+ * Returns the smallest matching tree of pairs, one taken from each tree at the
+ * same position, and run the given function on this pair, returning a tree of
+ * its results.
+ */
 export const zipWith = <A, B, C>(
   self: Tree<A>,
   that: Tree<B>,
