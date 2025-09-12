@@ -67,6 +67,9 @@ export const defaultNumberedOptions: NumberedArbitraryOptions = {
   initialize: 1,
 }
 
+/**
+ * @category internal
+ */
 export const normalizeOptions = ({
   onlyBranches,
   ...options
@@ -97,16 +100,10 @@ export const normalizeOptions = ({
   return final
 }
 
-export const normalizeNumberedOptions = ({
-  onlyBranches,
-  ...options
-}: Partial<NumberedArbitraryOptions> = defaultNumberedOptions): ArbitraryOptions => ({
-  ...defaultNumberedOptions,
-  ...Record.filterDefined(options),
-  ...Record.filterDefined({onlyBranches}),
-})
-
-/** If true, this level will be all leaves. */
+/**
+ * If true, this level will be all leaves.
+ * @category internal
+ */
 export const isAtMaxDepth: Predicate.Predicate<RuntimeOptions> = ({
   maxDepth,
   currentDepth,
@@ -115,6 +112,7 @@ export const isAtMaxDepth: Predicate.Predicate<RuntimeOptions> = ({
 /**
  * Choose one of the given leaf or branch arbitraries according to the branch
  * bias.
+ * @category internal
  */
 export const biasedOneOf =
   <A>(a: fc.Arbitrary<A>, branch: fc.Arbitrary<Branch<A>>) =>
@@ -126,6 +124,9 @@ export const biasedOneOf =
     )
   }
 
+/**
+ * @category internal
+ */
 export const nextDepth: Function.EndoOf<RuntimeOptions> = ({
   currentDepth,
   ...options

@@ -38,6 +38,6 @@ describe('Tree typeclass laws', () => {
   )
 
   testTypeclassLaws<TreeTypeLambda>(
-    props({maxChildren: 2, maxDepth: 2, branchBias: 1 / 6}),
+    props({maxChildren: 2, maxDepth: 2, branchBias: 1 / 7}),
   )({Traversable}, {numRuns: 10})
 })
