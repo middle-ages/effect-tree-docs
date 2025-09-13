@@ -4,7 +4,7 @@
  */
 import {
   fixTree,
-  getNode,
+  getValue,
   leaf,
   match,
   treeCata,
@@ -64,7 +64,7 @@ export const zipWithEffect =
   <A, B, C>(f: (self: A, that: B) => C) =>
   (self: Tree<A>, that: Tree<B>): Effect.Effect<Tree<C>> => {
     const zip = Function.tupled(zipWithEffect(f)),
-      node = f(getNode(self), getNode(that)),
+      node = f(getValue(self), getValue(that)),
       onLeaf = () => pipe(node, leaf, Effect.succeed)
 
     return pipe(

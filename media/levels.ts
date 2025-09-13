@@ -5,7 +5,7 @@
 import {
   byParentUnfold,
   fixTree,
-  getNode,
+  getValue,
   match,
   treeAna,
   treeCata,
@@ -138,7 +138,7 @@ export const cropDepthUnfold = <A>([depth, self]: readonly [
   Tree<A>,
 ]): TreeF.TreeF<A, readonly [number, Tree<A>]> =>
   depth === 1
-    ? pipe(self, getNode, TreeF.leafF)
+    ? pipe(self, getValue, TreeF.leafF)
     : pipe(
         self,
         match<A, TreeF.TreeF<A, [number, Tree<A>]>>({

@@ -52,7 +52,7 @@ export const branch: {
  * Create a new `Tree` from a node value and a possibly empty list of
  * child nodes.
  */
-export const tree = <A>(node: A, forest: readonly Tree<A>[]): Tree<A> =>
+export const tree = <A>(node: A, forest: readonly Tree<A>[] = []): Tree<A> =>
   Array.isNonEmptyReadonlyArray(forest)
     ? {unfixed: {node, forest}}
     : {unfixed: {node}}
@@ -87,8 +87,8 @@ export const match =
   <A, R>({onLeaf, onBranch}: Matcher<A, R>): ((tree: Tree<A>) => R) =>
   tree =>
     isBranch(tree)
-      ? onBranch(...pipe(tree, Pair.fanout(getNode, getBranchForest)))
-      : pipe(tree, getNode, onLeaf)
+      ? onBranch(...pipe(tree, Pair.fanout(getValue, getBranchForest)))
+      : pipe(tree, getValue, onLeaf)
 
 /** Compute child count for root node. */
 export const length: <A>(tree: Tree<A>) => number = match({
@@ -97,7 +97,7 @@ export const length: <A>(tree: Tree<A>) => number = match({
 })
 
 /** Get the value of a node. */
-export const getNode = <A>({unfixed: {node}}: Tree<A>): A => node
+export const getValue = <A>({unfixed: {node}}: Tree<A>): A => node
 
 /** Get the forest of a branch node. */
 export const getBranchForest = <A>({
@@ -186,7 +186,7 @@ export const modBranch =
 export const modNode =
   <A>(f: (a: A) => A): ((self: Tree<A>) => Tree<A>) =>
   self =>
-    setNode(self, pipe(self, getNode, f))
+    setNode(self, pipe(self, getValue, f))
 
 /**
  * Run a function to change the value, but not the type, of the top level
@@ -196,7 +196,7 @@ export const modNode =
 export const modForest =
   <A>(f: (a: readonly Tree<A>[]) => Tree<A>[]): ((self: Tree<A>) => Tree<A>) =>
   self =>
-    pipe(self, getForest, f, pipe(self, getNode, withForest<A>))
+    pipe(self, getForest, f, pipe(self, getValue, withForest<A>))
 
 /**
  * Same as {@link modForest} but only accepts branches, so the given function is
@@ -220,7 +220,7 @@ const _nthChild = <A>(n: number, self: Tree<A>): Option<Tree<A>> =>
     self,
     match({
       onLeaf: K(none<Tree<A>>()),
-      onBranch: (_, forest) => Array.get(forest, n),
+      onBranch: (_, forest) => Array.get(forest, n < 0 ? forest.length + n : n),
     }),
   )
 
@@ -242,12 +242,8 @@ export const nthChild: {
   },
 )
 
-/** Drill down to get the child node at a given index path or none. */
-export const getChildAtPath: {
-  <A>(indexes: number[], self: Tree<A>): Option<Tree<A>>
-  <A>(self: Tree<A>): (index: number[]) => Option<Tree<A>>
-} = Function.dual(2, <A>(indexes: number[], self: Tree<A>): Option<Tree<A>> => {
-  const [head, ...tail] = indexes
+const _getChildAtPath = <A>(path: number[], self: Tree<A>): Option<Tree<A>> => {
+  const [head, ...tail] = path
   if (head === undefined) return none()
 
   let child = nthChild(head, self)
@@ -259,4 +255,16 @@ export const getChildAtPath: {
   }
 
   return child
+}
+
+/** Drill down to get the child node at a given index path or none. */
+export const getChildAtPath: {
+  <A>(path: number[], self: Tree<A>): Option<Tree<A>>
+  <A>(self: Tree<A>): (path: number[]) => Option<Tree<A>>
+  flip: (path: number[]) => <A>(self: Tree<A>) => Option<Tree<A>>
+} = Object.assign(Function.dual(2, _getChildAtPath), {
+  flip:
+    (path: number[]) =>
+    <A>(self: Tree<A>) =>
+      _getChildAtPath(path, self),
 })

@@ -7,7 +7,7 @@ import type {FlatMap} from '@effect/typeclass'
 import {Monad as MD} from '@effect/typeclass'
 import {Effect, flow, Function, identity, pipe} from 'effect'
 import {cata, cataE} from 'effect-ts-folds'
-import {branch, getNode, leaf} from '../tree/index.js'
+import {branch, getValue, leaf} from '../tree/index.js'
 import type {Tree, TreeTypeLambda} from '../tree/types.js'
 import {Covariant, mapEffect} from './Covariant.js'
 
@@ -17,7 +17,7 @@ export const flattenFold = <A>(self: TreeF.TreeF<Tree<A>, Tree<A>>): Tree<A> =>
     self,
     TreeF.match({
       onLeaf: identity<Tree<A>>,
-      onBranch: (node, forest) => branch(getNode(node), forest),
+      onBranch: (node, forest) => branch(getValue(node), forest),
     }),
   )
 
