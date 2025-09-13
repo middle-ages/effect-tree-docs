@@ -98,7 +98,7 @@ export const levelsFold = <A>(
  * before that is the index of the parent in its parent, and so on, so that they
  * form the unique path between the node and the tree root.
  *
- * {@link getChildAtPath} will _get_ a child from a tree at a path.
+ * {@link drill} will _get_ a child from a tree at a path.
  * @category unfold
  */
 export const annotateLevelLabelsUnfold: TreeUnfolder<

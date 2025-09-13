@@ -227,6 +227,9 @@ const _nthChild = <A>(n: number, self: Tree<A>): Option<Tree<A>> =>
 /**
  * Return the nth child tree of a tree or `Option.none()` if index is
  * out-of-bounds or if given tree is a leaf.
+ *
+ * Negative indexes are handled as offsets from the end of the forest with `-1`
+ * being the last child, `-2` the child before it, and so on.
  */
 export const nthChild: {
   <A>(n: number, self: Tree<A>): Option<Tree<A>>
@@ -242,7 +245,7 @@ export const nthChild: {
   },
 )
 
-const _getChildAtPath = <A>(path: number[], self: Tree<A>): Option<Tree<A>> => {
+const _drill = <A>(path: number[], self: Tree<A>): Option<Tree<A>> => {
   const [head, ...tail] = path
   if (head === undefined) return none()
 
@@ -257,14 +260,19 @@ const _getChildAtPath = <A>(path: number[], self: Tree<A>): Option<Tree<A>> => {
   return child
 }
 
-/** Drill down to get the child node at a given index path or none. */
-export const getChildAtPath: {
+/**
+ * Drill down to get the child node at a given index path or none. Negative
+ * indexes are handled as in {@link nthChild}: as offsets from the end
+ * of the forest with `-1` being the last child, `-2` the child before it, and
+ * so on.
+ */
+export const drill: {
   <A>(path: number[], self: Tree<A>): Option<Tree<A>>
   <A>(self: Tree<A>): (path: number[]) => Option<Tree<A>>
   flip: (path: number[]) => <A>(self: Tree<A>) => Option<Tree<A>>
-} = Object.assign(Function.dual(2, _getChildAtPath), {
+} = Object.assign(Function.dual(2, _drill), {
   flip:
     (path: number[]) =>
     <A>(self: Tree<A>) =>
-      _getChildAtPath(path, self),
+      drill(path, self),
 })
