@@ -30,12 +30,12 @@ export const getEquivalenceEffect =
   <A>(equalsA: Equivalence.Equivalence<A>) =>
   (self: Tree<A>, that: Tree<A>): Effect.Effect<void, undefined> => {
     const equals = getEquivalenceEffect(equalsA)
-    const [[selfNode, selfForest], [thatNode, thatForest]] = [
+    const [[selfValue, selfForest], [thatValue, thatForest]] = [
       destruct(self),
       destruct(that),
     ]
 
-    return !equalsA(selfNode, thatNode) ||
+    return !equalsA(selfValue, thatValue) ||
       selfForest.length !== thatForest.length
       ? Effect.fail(void {})
       : Array.isNonEmptyReadonlyArray(selfForest)

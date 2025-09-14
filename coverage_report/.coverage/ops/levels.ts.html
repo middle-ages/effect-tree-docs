@@ -376,20 +376,20 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">238x</span>
-<span class="cline-any cline-yes">238x</span>
-<span class="cline-any cline-yes">238x</span>
-<span class="cline-any cline-yes">238x</span>
-<span class="cline-any cline-yes">238x</span>
-<span class="cline-any cline-yes">238x</span>
-<span class="cline-any cline-yes">238x</span>
-<span class="cline-any cline-yes">48x</span>
-<span class="cline-any cline-yes">48x</span>
-<span class="cline-any cline-yes">48x</span>
-<span class="cline-any cline-yes">48x</span>
-<span class="cline-any cline-yes">238x</span>
-<span class="cline-any cline-yes">238x</span>
-<span class="cline-any cline-yes">238x</span>
+<span class="cline-any cline-yes">240x</span>
+<span class="cline-any cline-yes">240x</span>
+<span class="cline-any cline-yes">240x</span>
+<span class="cline-any cline-yes">240x</span>
+<span class="cline-any cline-yes">240x</span>
+<span class="cline-any cline-yes">240x</span>
+<span class="cline-any cline-yes">240x</span>
+<span class="cline-any cline-yes">49x</span>
+<span class="cline-any cline-yes">49x</span>
+<span class="cline-any cline-yes">49x</span>
+<span class="cline-any cline-yes">49x</span>
+<span class="cline-any cline-yes">240x</span>
+<span class="cline-any cline-yes">240x</span>
+<span class="cline-any cline-yes">240x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -461,19 +461,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">223x</span>
-<span class="cline-any cline-yes">152x</span>
-<span class="cline-any cline-yes">71x</span>
-<span class="cline-any cline-yes">71x</span>
-<span class="cline-any cline-yes">71x</span>
-<span class="cline-any cline-yes">71x</span>
-<span class="cline-any cline-yes">71x</span>
-<span class="cline-any cline-yes">41x</span>
-<span class="cline-any cline-yes">41x</span>
-<span class="cline-any cline-yes">41x</span>
-<span class="cline-any cline-yes">41x</span>
-<span class="cline-any cline-yes">71x</span>
-<span class="cline-any cline-yes">71x</span>
+<span class="cline-any cline-yes">211x</span>
+<span class="cline-any cline-yes">153x</span>
+<span class="cline-any cline-yes">58x</span>
+<span class="cline-any cline-yes">58x</span>
+<span class="cline-any cline-yes">58x</span>
+<span class="cline-any cline-yes">58x</span>
+<span class="cline-any cline-yes">58x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-yes">58x</span>
+<span class="cline-any cline-yes">58x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -661,10 +661,10 @@ export const levelsFold = &lt;A&gt;(
   pipe(
     self,
     TreeF.match({
-      onLeaf: node =&gt; [[node]],
-      onBranch: (node, forest): NonEmptyArray2&lt;A&gt; =&gt; {
+      onLeaf: value =&gt; [[value]],
+      onBranch: (value, forest): NonEmptyArray2&lt;A&gt; =&gt; {
         return [
-          [node],
+          [value],
           ...(pipe(
             forest as NonEmptyArray&lt;NonEmptyArray2&lt;A&gt;&gt;,
             transpose,
@@ -705,8 +705,8 @@ export const annotateLevelLabelsUnfold: TreeUnfolder&lt;
     self,
     match({
       onLeaf: prefixLeaf,
-      onBranch: (node, forest) =&gt;
-        TreeF.branchF(prefixValue(node), Array.map(forest, prefixBranch)),
+      onBranch: (value, forest) =&gt;
+        TreeF.branchF(prefixValue(value), Array.map(forest, prefixBranch)),
     }),
   )
 }
@@ -726,9 +726,9 @@ export const cropDepthUnfold = &lt;A&gt;([depth, self]: readonly [
         self,
         match&lt;A, TreeF.TreeF&lt;A, [number, Tree&lt;A&gt;]&gt;&gt;({
           onLeaf: TreeF.leafF,
-          onBranch: (node, forest) =&gt;
+          onBranch: (value, forest) =&gt;
             TreeF.branchF(
-              node,
+              value,
               pipe(forest, Array.map(pair.withFirst(depth - 1))),
             ),
         }),
@@ -802,7 +802,7 @@ export const cropDepth =
 export const growLeavesFold =
   &lt;A&gt;(grow: TreeUnfold&lt;A, A&gt;): TreeFolder&lt;A, Tree&lt;A&gt;&gt; =&gt;
   self =&gt;
-    TreeF.isBranch(self) ? fixTree(self) : grow(TreeF.getNode(self))
+    TreeF.isBranch(self) ? fixTree(self) : grow(TreeF.getValue(self))
 &nbsp;
 /**
  * Grows the tree at its leaves.
@@ -847,7 +847,7 @@ export const binaryTree = (depth: number): Tree&lt;number&gt; =&gt;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-13T19:36:11.593Z
+                at 2025-09-14T00:05:35.517Z
             </div>
         <script src="../prettify.js"></script>
         <script>

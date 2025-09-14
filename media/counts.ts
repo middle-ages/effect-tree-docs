@@ -62,9 +62,9 @@ export const countOfFold = <A>(
   predicate: Predicate.Predicate<A>,
 ): TreeFolder<A, number> =>
   TreeF.match({
-    onLeaf: node => (predicate(node) ? 1 : 0),
-    onBranch: (node, forest) =>
-      (predicate(node) ? 1 : 0) + Number.sumAll(forest),
+    onLeaf: value => (predicate(value) ? 1 : 0),
+    onBranch: (value, forest) =>
+      (predicate(value) ? 1 : 0) + Number.sumAll(forest),
   })
 
 /**

@@ -16,12 +16,12 @@ export const mapEffect = <A, B, E = unknown, R = never>(
 ): ((self: Tree<A>) => Effect.Effect<Tree<B>, E, R>) =>
   match({
     onLeaf: flow(f, Effect.map(leaf)),
-    onBranch: (node, forest) =>
+    onBranch: (value, forest) =>
       Effect.suspend(() =>
         pipe(
           forest,
           Effect.forEach(mapEffect(f)),
-          Effect.flatMap(forest => pipe(node, f, Effect.map(branch(forest)))),
+          Effect.flatMap(forest => pipe(value, f, Effect.map(branch(forest)))),
         ),
       ),
   })
@@ -35,13 +35,13 @@ mapEffect.pre = <A, B, E = unknown, R = never>(
 ): ((self: Tree<A>) => Effect.Effect<Tree<B>, E, R>) =>
   match({
     onLeaf: flow(f, Effect.map(leaf)),
-    onBranch: (node, forest) =>
+    onBranch: (value, forest) =>
       Effect.suspend(() =>
-        Effect.flatMap(f(node), node =>
+        Effect.flatMap(f(value), value =>
           pipe(
             forest,
             Effect.forEach(mapEffect.pre(f)),
-            Effect.map(withForest(node)),
+            Effect.map(withForest(value)),
           ),
         ),
       ),

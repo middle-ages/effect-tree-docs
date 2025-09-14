@@ -64,8 +64,8 @@ export const zipWithEffect =
   <A, B, C>(f: (self: A, that: B) => C) =>
   (self: Tree<A>, that: Tree<B>): Effect.Effect<Tree<C>> => {
     const zip = Function.tupled(zipWithEffect(f)),
-      node = f(getValue(self), getValue(that)),
-      onLeaf = () => pipe(node, leaf, Effect.succeed)
+      value = f(getValue(self), getValue(that)),
+      onLeaf = () => pipe(value, leaf, Effect.succeed)
 
     return pipe(
       self,
@@ -82,7 +82,7 @@ export const zipWithEffect =
                     selfForest,
                     Array.zip(thatForest),
                     Effect.forEach(zip),
-                    Effect.map(withForest(node)),
+                    Effect.map(withForest(value)),
                   ),
                 ),
             }),

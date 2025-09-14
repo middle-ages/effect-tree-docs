@@ -30,24 +30,24 @@ const orderedTraverseEffect =
       self: Tree<A>,
     ) => Effect.Effect<HKT.Kind<F, I, R1, E1, Tree<B>>, E2, R2> = match({
       onLeaf: flow(f, Effect.map(F.map(leaf))),
-      onBranch: (node, forest) =>
+      onBranch: (value, forest) =>
         Effect.suspend(() => {
           return order === 'post'
             ? pipe(
                 forest,
                 Effect.forEach(run),
                 Effect.flatMap(forest =>
-                  Effect.map(f(node), buildTree(forest)),
+                  Effect.map(f(value), buildTree(forest)),
                 ),
               )
             : pipe(
-                node,
+                value,
                 f,
-                Effect.flatMap(node =>
+                Effect.flatMap(value =>
                   pipe(
                     forest,
                     Effect.forEach(run),
-                    Effect.map(forest => buildTree(node, forest)),
+                    Effect.map(forest => buildTree(value, forest)),
                   ),
                 ),
               )
@@ -102,20 +102,20 @@ export const treeK = <F extends HKT.TypeLambda>(
   F: Applicative.Applicative<F>,
 ): {
   <A, E = unknown, O = unknown, R = never>(
-    node: HKT.Kind<F, R, O, E, A>,
+    value: HKT.Kind<F, R, O, E, A>,
     forest: HKT.Kind<F, R, O, E, Tree<A>>[],
   ): HKT.Kind<F, R, O, E, Tree<A>>
   <A, E = unknown, O = unknown, R = never>(
     forest: HKT.Kind<F, R, O, E, Tree<A>>[],
-  ): (node: HKT.Kind<F, R, O, E, A>) => HKT.Kind<F, R, O, E, Tree<A>>
+  ): (value: HKT.Kind<F, R, O, E, A>) => HKT.Kind<F, R, O, E, Tree<A>>
 } =>
   Function.dual(
     2,
     <A, E = unknown, O = unknown, R = never>(
-      node: HKT.Kind<F, R, O, E, A>,
+      value: HKT.Kind<F, R, O, E, A>,
       forest: HKT.Kind<F, R, O, E, Tree<A>>[],
     ): HKT.Kind<F, R, O, E, Tree<A>> =>
       SemiApplicative.lift2(F)((self: A, that: readonly Tree<A>[]) =>
         tree(self, that),
-      )(node, pipe(forest, traversable.sequence(ArrayTraversable)(F))),
+      )(value, pipe(forest, traversable.sequence(ArrayTraversable)(F))),
   )

@@ -141,45 +141,45 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4619x</span>
+<span class="cline-any cline-yes">4500x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4619x</span>
-<span class="cline-any cline-yes">4619x</span>
-<span class="cline-any cline-yes">4619x</span>
-<span class="cline-any cline-yes">757x</span>
-<span class="cline-any cline-yes">757x</span>
-<span class="cline-any cline-yes">757x</span>
-<span class="cline-any cline-yes">757x</span>
-<span class="cline-any cline-yes">757x</span>
-<span class="cline-any cline-yes">757x</span>
-<span class="cline-any cline-yes">757x</span>
-<span class="cline-any cline-yes">4619x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4500x</span>
+<span class="cline-any cline-yes">4500x</span>
+<span class="cline-any cline-yes">4500x</span>
+<span class="cline-any cline-yes">653x</span>
+<span class="cline-any cline-yes">653x</span>
+<span class="cline-any cline-yes">653x</span>
+<span class="cline-any cline-yes">653x</span>
+<span class="cline-any cline-yes">653x</span>
+<span class="cline-any cline-yes">653x</span>
+<span class="cline-any cline-yes">653x</span>
+<span class="cline-any cline-yes">4500x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">21717x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21717x</span>
-<span class="cline-any cline-yes">21717x</span>
-<span class="cline-any cline-yes">21717x</span>
-<span class="cline-any cline-yes">12334x</span>
-<span class="cline-any cline-yes">12334x</span>
-<span class="cline-any cline-yes">12334x</span>
-<span class="cline-any cline-yes">12334x</span>
-<span class="cline-any cline-yes">12334x</span>
-<span class="cline-any cline-yes">12334x</span>
-<span class="cline-any cline-yes">12334x</span>
-<span class="cline-any cline-yes">12334x</span>
-<span class="cline-any cline-yes">12334x</span>
-<span class="cline-any cline-yes">21717x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">20631x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20631x</span>
+<span class="cline-any cline-yes">20631x</span>
+<span class="cline-any cline-yes">20631x</span>
+<span class="cline-any cline-yes">11697x</span>
+<span class="cline-any cline-yes">11697x</span>
+<span class="cline-any cline-yes">11697x</span>
+<span class="cline-any cline-yes">11697x</span>
+<span class="cline-any cline-yes">11697x</span>
+<span class="cline-any cline-yes">11697x</span>
+<span class="cline-any cline-yes">11697x</span>
+<span class="cline-any cline-yes">11697x</span>
+<span class="cline-any cline-yes">11697x</span>
+<span class="cline-any cline-yes">20631x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">9381x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">8932x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -209,12 +209,12 @@ export const mapEffect = &lt;A, B, E = unknown, R = never&gt;(
 ): ((self: Tree&lt;A&gt;) =&gt; Effect.Effect&lt;Tree&lt;B&gt;, E, R&gt;) =&gt;
   match({
     onLeaf: flow(f, Effect.map(leaf)),
-    onBranch: (node, forest) =&gt;
+    onBranch: (value, forest) =&gt;
       Effect.suspend(() =&gt;
         pipe(
           forest,
           Effect.forEach(mapEffect(f)),
-          Effect.flatMap(forest =&gt; pipe(node, f, Effect.map(branch(forest)))),
+          Effect.flatMap(forest =&gt; pipe(value, f, Effect.map(branch(forest)))),
         ),
       ),
   })
@@ -228,13 +228,13 @@ mapEffect.pre = &lt;A, B, E = unknown, R = never&gt;(
 ): ((self: Tree&lt;A&gt;) =&gt; Effect.Effect&lt;Tree&lt;B&gt;, E, R&gt;) =&gt;
   match({
     onLeaf: flow(f, Effect.map(leaf)),
-    onBranch: (node, forest) =&gt;
+    onBranch: (value, forest) =&gt;
       Effect.suspend(() =&gt;
-        Effect.flatMap(f(node), node =&gt;
+        Effect.flatMap(f(value), value =&gt;
           pipe(
             forest,
             Effect.forEach(mapEffect.pre(f)),
-            Effect.map(withForest(node)),
+            Effect.map(withForest(value)),
           ),
         ),
       ),
@@ -262,7 +262,7 @@ export const flap: {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-13T19:36:11.593Z
+                at 2025-09-14T00:05:35.517Z
             </div>
         <script src="../prettify.js"></script>
         <script>

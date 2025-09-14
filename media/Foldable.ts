@@ -24,11 +24,11 @@ const reduceEffect =
     pipe(
       self,
       match({
-        onLeaf: node => Effect.succeed(reducer(initial, node)),
-        onBranch: (node, forest) =>
+        onLeaf: value => Effect.succeed(reducer(initial, value)),
+        onBranch: (value, forest) =>
           Array.reduce(
             forest,
-            Effect.succeed(reducer(initial, node)),
+            Effect.succeed(reducer(initial, value)),
             (initial, tree) =>
               Effect.suspend(() =>
                 pipe(initial, Effect.flatMap(reduceEffect(reducer, tree))),
@@ -51,9 +51,9 @@ export const monoidFold =
     pipe(
       self,
       TreeF.match<A, A, A>({
-        onLeaf: node => M.combine(M.empty, node),
-        onBranch: (node, forest) =>
-          Array.reduce(forest, M.combine(M.empty, node), M.combine),
+        onLeaf: value => M.combine(M.empty, value),
+        onBranch: (value, forest) =>
+          Array.reduce(forest, M.combine(M.empty, value), M.combine),
       }),
     )
 
@@ -70,7 +70,7 @@ export const predicateFold =
       ...pipe(
         self,
         fanout(
-          flow(TreeF.getNode, predicate),
+          flow(TreeF.getValue, predicate),
           flow(TreeF.getForest, Array.reduce(M.empty, M.combine)),
         ),
       ),

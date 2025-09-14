@@ -207,27 +207,27 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">146x</span>
-<span class="cline-any cline-yes">884x</span>
-<span class="cline-any cline-yes">884x</span>
-<span class="cline-any cline-yes">884x</span>
-<span class="cline-any cline-yes">884x</span>
-<span class="cline-any cline-yes">884x</span>
-<span class="cline-any cline-yes">884x</span>
-<span class="cline-any cline-yes">884x</span>
+<span class="cline-any cline-yes">981x</span>
+<span class="cline-any cline-yes">981x</span>
+<span class="cline-any cline-yes">981x</span>
+<span class="cline-any cline-yes">981x</span>
+<span class="cline-any cline-yes">981x</span>
+<span class="cline-any cline-yes">981x</span>
+<span class="cline-any cline-yes">981x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">884x</span>
-<span class="cline-any cline-yes">884x</span>
+<span class="cline-any cline-yes">981x</span>
+<span class="cline-any cline-yes">981x</span>
 <span class="cline-any cline-yes">146x</span>
-<span class="cline-any cline-yes">738x</span>
-<span class="cline-any cline-yes">738x</span>
-<span class="cline-any cline-yes">738x</span>
-<span class="cline-any cline-yes">738x</span>
-<span class="cline-any cline-yes">738x</span>
-<span class="cline-any cline-yes">884x</span>
-<span class="cline-any cline-yes">884x</span>
-<span class="cline-any cline-yes">884x</span>
-<span class="cline-any cline-yes">884x</span>
-<span class="cline-any cline-yes">884x</span>
+<span class="cline-any cline-yes">835x</span>
+<span class="cline-any cline-yes">835x</span>
+<span class="cline-any cline-yes">835x</span>
+<span class="cline-any cline-yes">835x</span>
+<span class="cline-any cline-yes">835x</span>
+<span class="cline-any cline-yes">981x</span>
+<span class="cline-any cline-yes">981x</span>
+<span class="cline-any cline-yes">981x</span>
+<span class="cline-any cline-yes">981x</span>
+<span class="cline-any cline-yes">981x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -239,7 +239,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">742x</span>
+<span class="cline-any cline-yes">839x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -260,25 +260,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">746x</span>
+<span class="cline-any cline-yes">843x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">746x</span>
-<span class="cline-any cline-yes">746x</span>
-<span class="cline-any cline-yes">746x</span>
-<span class="cline-any cline-yes">1594x</span>
-<span class="cline-any cline-yes">746x</span>
+<span class="cline-any cline-yes">843x</span>
+<span class="cline-any cline-yes">843x</span>
+<span class="cline-any cline-yes">843x</span>
+<span class="cline-any cline-yes">2022x</span>
+<span class="cline-any cline-yes">843x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">742x</span>
+<span class="cline-any cline-yes">839x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">742x</span>
-<span class="cline-any cline-yes">742x</span>
-<span class="cline-any cline-yes">3544x</span>
-<span class="cline-any cline-yes">742x</span>
+<span class="cline-any cline-yes">839x</span>
+<span class="cline-any cline-yes">839x</span>
+<span class="cline-any cline-yes">5028x</span>
+<span class="cline-any cline-yes">839x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
  * Filtering and finding nodes.
  * @packageDocumentation
@@ -359,8 +359,8 @@ export const includesFold =
   ): ((needle: A) =&gt; TreeFolder&lt;A, boolean&gt;) =&gt;
   a =&gt;
     TreeF.match({
-      onLeaf: node =&gt; equals(a, node),
-      onBranch: (node, forest) =&gt; equals(a, node) || Boolean.some(forest),
+      onLeaf: value =&gt; equals(a, value),
+      onBranch: (value, forest) =&gt; equals(a, value) || Boolean.some(forest),
     })
 &nbsp;
 /**
@@ -372,8 +372,8 @@ export const filterNodesFold = &lt;A&gt;(
 ): TreeFolder&lt;A, Tree&lt;A&gt;&gt; =&gt;
   TreeF.match({
     onLeaf: leaf,
-    onBranch: (node, forest) =&gt;
-      tree(node, pipe(forest, Array.filter(predicate))),
+    onBranch: (value, forest) =&gt;
+      tree(value, pipe(forest, Array.filter(predicate))),
   })
 &nbsp;
 /**
@@ -385,7 +385,7 @@ export const filterLeavesFold = &lt;A&gt;(
 ): TreeFolder&lt;A, Tree&lt;A&gt;&gt; =&gt;
   filterNodesFold(
     ({unfixed}) =&gt;
-      TreeF.length(unfixed) !== 0 || pipe(unfixed, TreeF.getNode, predicate),
+      TreeF.length(unfixed) !== 0 || pipe(unfixed, TreeF.getValue, predicate),
   )
 &nbsp;</pre></td></tr></table></pre>
 
@@ -394,7 +394,7 @@ export const filterLeavesFold = &lt;A&gt;(
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-13T19:36:11.593Z
+                at 2025-09-14T00:05:35.517Z
             </div>
         <script src="../prettify.js"></script>
         <script>

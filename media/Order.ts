@@ -30,28 +30,28 @@ const getOrderEffect =
     return pipe(
       self,
       match({
-        onLeaf: selfNode =>
+        onLeaf: selfValue =>
           pipe(
             that,
             match({
-              onLeaf: thatNode => {
-                const nodeOrder = orderA(selfNode, thatNode)
-                return nodeOrder === 0
+              onLeaf: thatValue => {
+                const valueOrder = orderA(selfValue, thatValue)
+                return valueOrder === 0
                   ? Effect.succeed(void {})
-                  : Effect.fail(nodeOrder)
+                  : Effect.fail(valueOrder)
               },
               onBranch: K(Effect.fail(-1)),
             }),
           ),
-        onBranch: (selfNode, selfForest) =>
+        onBranch: (selfValue, selfForest) =>
           pipe(
             that,
             match({
               onLeaf: K(Effect.fail(1)),
-              onBranch: (thatNode, thatForest) => {
-                const nodeOrder = orderA(selfNode, thatNode)
-                if (nodeOrder !== 0) {
-                  return Effect.fail(nodeOrder)
+              onBranch: (thatValue, thatForest) => {
+                const valueOrder = orderA(selfValue, thatValue)
+                if (valueOrder !== 0) {
+                  return Effect.fail(valueOrder)
                 }
 
                 if (selfForest.length < thatForest.length) {
