@@ -3,7 +3,10 @@ import {Function, Record} from '#util'
 import type {Predicate} from 'effect'
 import fc from 'fast-check'
 
-/** Tree arbitrary generation options. */
+/**
+ * Tree arbitrary generation options.
+ * @category arbitrary
+ */
 export interface ArbitraryOptions {
   /**
    * If true no leaves will be generated so that all trees will always have at
@@ -32,13 +35,17 @@ export interface ArbitraryOptions {
  * tree has unique node values, one per each number in the inclusive
  * range `initialize`…`initialize + nodeCount - 1` where the root node
  * value is `initialize`.
+ * @category arbitrary
  */
 export interface NumberedArbitraryOptions extends ArbitraryOptions {
   /** Start numbering of nodes at this number. Default is `1`.*/
   initialize: number
 }
 
-/** props threaded through the recursive arbitrary for Tree<A>. */
+/**
+ * props threaded through the recursive arbitrary for Tree<A>.
+ * @category arbitrary
+ */
 export interface RuntimeOptions extends ArbitraryOptions {
   /**
    * Current depth from top. The value will be `0` for the root note,
@@ -50,11 +57,15 @@ export interface RuntimeOptions extends ArbitraryOptions {
 /**
  * Type of functions that build a tree arbitrary from the arbitrary runtime
  * options.
+ * @category arbitrary
  */
 export interface GetArbitrary<A> {
   (options: RuntimeOptions): fc.Arbitrary<Tree<A>>
 }
 
+/**
+ * @category arbitrary
+ */
 export const defaultOptions: ArbitraryOptions = {
   maxChildren: 5,
   branchBias: 1 / 4,
@@ -62,6 +73,9 @@ export const defaultOptions: ArbitraryOptions = {
   maxDepth: 3,
 }
 
+/**
+ * @category arbitrary
+ */
 export const defaultNumberedOptions: NumberedArbitraryOptions = {
   ...defaultOptions,
   initialize: 1,

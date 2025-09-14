@@ -16,7 +16,10 @@ import * as TreeF from '#treeF'
 import {Effect, Number, pipe, Predicate} from 'effect'
 import {constFalse, constTrue} from 'effect/Function'
 
-/** Compute how many nodes in a tree satisfy the given `predicate`. */
+/**
+ * Compute how many nodes in a tree satisfy the given `predicate`.
+ * @category ops
+ */
 export const countOf = <A>(
   predicate: Predicate.Predicate<A>,
 ): TreeFold<A, number> => pipe(predicate, countOfFold, treeCata)
@@ -70,19 +73,29 @@ export const countOfFold = <A>(
 /**
  * Count all nodes that are descendants of the root node and the root node
  * itself.
+ * @category ops
  */
 export const nodeCount: TreeFoldOf<number> = self =>
   pipe(self, treeCata(descendantCountFold))
 
-/** Compute the maximum node depth of all nodes in a tree. */
+/**
+ * Compute the maximum node depth of all nodes in a tree.
+ * @category ops
+ */
 export const maximumNodeHeight: TreeFoldOf<number> = self =>
   pipe(self, treeCata(maximumHeightFold))
 
-/** Compute the maximum child count of any node in the tree. */
+/**
+ * Compute the maximum child count of any node in the tree.
+ * @category ops
+ */
 export const maximumNodeDegree: TreeFoldOf<number> = self =>
   pipe(self, treeCata(maximumDegreeFold))
 
-/** Fails if node count is at least the given number. */
+/**
+ * Fails if node count is at least the given number.
+ * @category ops
+ */
 export const nodeCountAtLeastFold: (
   atLeast: number,
 ) => TreeEffectFolderOf<number, void> = atLeast => self => {
@@ -93,6 +106,7 @@ export const nodeCountAtLeastFold: (
 /**
  * True if node count is at least the given number.  Will short-circuit when
  * condition is reached rather than traverse entire tree.
+ * @category ops
  */
 export const nodeCountAtLeast =
   (atLeast: number) =>

@@ -10,6 +10,7 @@ import type {Tree, TreeTypeLambda} from '../tree/types.js'
 /**
  * Map an effectful function over the tree in post-order: parent effect is run
  * _after_ children.
+ * @category instances
  */
 export const mapEffect = <A, B, E = unknown, R = never>(
   f: (a: A) => Effect.Effect<B, E, R>,
@@ -29,6 +30,7 @@ export const mapEffect = <A, B, E = unknown, R = never>(
 /**
  * Map an effectful function over the tree in pre-order: parent effect is run
  * _before_ children.
+ * @category instances
  */
 mapEffect.pre = <A, B, E = unknown, R = never>(
   f: (a: A) => Effect.Effect<B, E, R>,
@@ -47,17 +49,30 @@ mapEffect.pre = <A, B, E = unknown, R = never>(
       ),
   })
 
+/**
+ * Map over all tree nodes using the given function.
+ * @category instances
+ */
 export const map: CO.Covariant<TreeTypeLambda>['map'] = Function.dual(
   2,
   <A, B>(self: Tree<A>, f: (a: A) => B): Tree<B> =>
     pipe(self, mapEffect.pre(flow(f, Effect.succeed)), Effect.runSync),
 )
 
+/**
+ * @category instances
+ */
 export const imap = CO.imap<TreeTypeLambda>(map)
 
-/** Covariant instance for `Tree<A>`. */
+/**
+ * Covariant instance for {@link Tree}.
+ * @category instances
+ */
 export const Covariant: CO.Covariant<TreeTypeLambda> = {map, imap}
 
+/**
+ * @category instances
+ */
 export const flap: {
   <A, B>(self: Tree<(a: A) => B>): (a: A) => Tree<B>
   <A, B>(a: A, self: Tree<(a: A) => B>): Tree<B>

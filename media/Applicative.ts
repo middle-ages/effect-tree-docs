@@ -16,7 +16,10 @@ import {Pair} from '../util.js'
 import {imap, map} from './Covariant.js'
 import {flatMap} from './Monad.js'
 
-/** Cartesian product of two trees. */
+/**
+ * Cartesian product of two trees.
+ * @category instances
+ */
 export const product: SA.SemiApplicative<TreeTypeLambda>['product'] =
   Function.dual(
     2,
@@ -27,6 +30,9 @@ export const product: SA.SemiApplicative<TreeTypeLambda>['product'] =
       ),
   )
 
+/**
+ * @category instances
+ */
 export const productMany = SP.productMany<TreeTypeLambda>(map, product)
 
 /**
@@ -35,6 +41,7 @@ export const productMany = SP.productMany<TreeTypeLambda>(map, product)
  * @param collection - Cartesian product will be computed on this iterable of
  * trees.
  * @returns The tree that is the cartesian product of all given trees.
+ * @category instances
  */
 export const productAll: AP.Applicative<TreeTypeLambda>['productAll'] = <A>(
   collection: Iterable<Tree<A>>,
@@ -43,7 +50,10 @@ export const productAll: AP.Applicative<TreeTypeLambda>['productAll'] = <A>(
   return head === undefined ? leaf<A[]>([]) : productMany(head, tail)
 }
 
-/** Applicative instance for `Tree<A>`. */
+/**
+ * Applicative instance for {@link Tree}.
+ * @category instances
+ */
 export const Applicative: AP.Applicative<TreeTypeLambda> = {
   of: leaf,
   imap,

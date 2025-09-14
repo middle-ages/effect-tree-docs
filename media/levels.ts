@@ -21,7 +21,10 @@ import {K, type EndoOf} from '#util/Function'
 import {pair} from '#util/Pair'
 import {Array, flow, pipe} from 'effect'
 
-/** Settings for the `unfolds.levelTree` unfold. */
+/**
+ * Settings for the `unfolds.levelTree` unfold.
+ * @category ops
+ */
 export interface LevelTreeSettings {
   /** Requested depth of unfolded tree. */
   depth: number
@@ -151,7 +154,10 @@ export const cropDepthUnfold = <A>([depth, self]: readonly [
         }),
       )
 
-/** Returns tree nodes grouped by level. */
+/**
+ * Returns tree nodes grouped by level.
+ * @category ops
+ */
 export const levels: <A>(self: Tree<A>) => NonEmptyArray2<A> = self =>
   pipe(self, treeCata(levelsFold))
 
@@ -176,13 +182,17 @@ export const unfoldLevelTree: (
 ) => TreeUnfold<number, number> = settings =>
   pipe(settings, levelTreeUnfold, treeAna)
 
-/** Returns tree nodes paired with their hop count from root. */
+/**
+ * Returns tree nodes paired with their hop count from root.
+ * @category ops
+ */
 export const annotateDepth = <A>(self: Tree<A>): Tree<readonly [A, number]> =>
   treeAna(annotateDepthUnfold<A>)([self, 0])
 
 /**
  * Annotate a string tree with label that indicate the node depth and index
  * in their parent node.
+ * @category ops
  */
 export const addLevelLabels: (self: Tree<string>) => Tree<string> = tree =>
   treeAna(annotateLevelLabelsUnfold)(['1.', tree])
@@ -205,6 +215,7 @@ export const addLevelLabels: (self: Tree<string>) => Tree<string> = tree =>
  * //  ┬1        Has been cropped to a tree of depth=2
  * //  └─2       depth2 = branch(1, [leaf(2)])
  * ```
+ * @category ops
  */
 export const cropDepth =
   (depth: number) =>
@@ -227,6 +238,7 @@ export const growLeavesFold =
  * Given a function of type `(a: A) ⇒ Tree<A>` replacing a value of type `A`
  * with a `Tree<A>`, grow the tree by running all leaves through this function,
  * replacing the leaves with the function results.
+ * @category ops
  */
 export const growLeaves = <A>(grow: TreeUnfold<A, A>): TreeFold<A, Tree<A>> =>
   pipe(grow, growLeavesFold, treeCata)
@@ -254,6 +266,7 @@ export const growLeaves = <A>(grow: TreeUnfold<A, A>): TreeFold<A, Tree<A>> =>
  * @param depth Tree depth requested. Tree returned is perfectly balanced. When
  * depth is zero returns a leaf.
  * @returns A binary level tree of the given depth..
+ * @category ops
  */
 export const binaryTree = (depth: number): Tree<number> =>
   unfoldLevelTree({depth, degree: K(2)})(1)

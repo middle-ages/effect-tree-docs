@@ -7,7 +7,10 @@ import {Effect, identity} from 'effect'
 import {match} from '../tree/index.js'
 import type {Tree} from '../tree/types.js'
 
-/** Get an Order instance for `Tree<A>`. */
+/**
+ * Build an order for {@link Tree} from and order of its underlying type.
+ * @category instances
+ */
 export const getOrder =
   <A>(orderA: Order.Order<A>): Order.Order<Tree<A>> =>
   (self: Tree<A>, that: Tree<A>) =>

@@ -102,7 +102,16 @@
 <a name='L37'></a><a href='#L37'>37</a>
 <a name='L38'></a><a href='#L38'>38</a>
 <a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -116,21 +125,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -138,6 +144,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -154,6 +172,7 @@ import type {
 /**
  * Run a {@link TreeFolder}&lt;A, B&gt; on a {@link Tree}&lt;A&gt; to fold into a value of
  * type `B`.
+ * @category fold
  */
 export const treeCata: &lt;A, B&gt;(φ: TreeFolder&lt;A, B&gt;) =&gt; TreeFold&lt;A, B&gt; = cata(
   TreeF.Traversable,
@@ -163,11 +182,15 @@ export const treeCata: &lt;A, B&gt;(φ: TreeFolder&lt;A, B&gt;) =&gt; TreeFold&l
  * Run a {@link TreeProductFolder}&lt;A, B&gt; on a {@link Tree}&lt;A&gt; to fold into a value of
  * type `B`. Just like {@link treeCata} except the folder function
  * gets all previous computed values.
+ * @category fold
  */
 export const treePara: &lt;A, B&gt;(φ: TreeProductFolder&lt;A, B&gt;) =&gt; TreeFold&lt;A, B&gt; =
   para(TreeF.Traversable)
 &nbsp;
-/** Just like {@link treeCata}, except the folder is _effectful_.  */
+/**
+ * Just like {@link treeCata}, except the folder is _effectful_.
+ * @category fold
+ */
 export const treeCataEffect: &lt;A, B, E = never, R = never&gt;(
   φ: TreeEffectFolder&lt;A, B, E, R&gt;,
 ) =&gt; TreeEffectFold&lt;A, B, E, R&gt; = cataE(TreeF.Traversable)
@@ -175,10 +198,14 @@ export const treeCataEffect: &lt;A, B, E = never, R = never&gt;(
 /**
  * Zip a pair of folds to create a single fold. It will fold into a pair of the
  * result of the zipped folds.
+ * @category fold
  */
 export const zipTreeFolds = zipFolds(TreeF.Covariant)
 &nbsp;
-/** Create a fold that folds into a struct from a struct of folds. */
+/**
+ * Create a fold that folds into a struct from a struct of folds.
+ * @category fold
+ */
 export const structTreeFolds = struct(TreeF.Covariant)
 &nbsp;</pre></td></tr></table></pre>
 
@@ -187,7 +214,7 @@ export const structTreeFolds = struct(TreeF.Covariant)
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-14T00:05:35.517Z
+                at 2025-09-14T00:55:01.757Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

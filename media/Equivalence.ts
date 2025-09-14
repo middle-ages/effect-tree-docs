@@ -8,11 +8,12 @@ import {destruct} from '../tree/index.js'
 import type {Tree} from '../tree/types.js'
 
 /**
- * Creates an `Equivalence` for a `Tree<A>` type, given an Equivalence for the
+ * Creates an `Equivalence` for a {@link Tree}<A> type, given an Equivalence for the
  * underlying type `A`.
  *
  * The equivalence will scan every node of both trees to make sure that are the
  * same, but will short-circuit on a mismatch.
+ * @category instances
  */
 export const getEquivalence = <A>(
   equalsA: Equivalence.Equivalence<A>,
@@ -26,6 +27,10 @@ export const getEquivalence = <A>(
     Effect.runSync,
   )
 
+/**
+ * List {@link getEquivalence} but the result is left inside an effect.
+ * @category instances
+ */
 export const getEquivalenceEffect =
   <A>(equalsA: Equivalence.Equivalence<A>) =>
   (self: Tree<A>, that: Tree<A>): Effect.Effect<void, undefined> => {

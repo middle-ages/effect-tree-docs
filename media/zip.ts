@@ -27,6 +27,7 @@ import {Array, Effect, Function, pipe} from 'effect'
  * //  left = branch('a', [leaf('b')])
  * // right = branch( 1 , [leaf( 2 )])
  * ```
+ * @category ops
  */
 export const unzip: <A, B>(t: Tree<[A, B]>) => [Tree<A>, Tree<B>] = tree =>
   pipe(tree, treeCata(unzipFold))
@@ -59,6 +60,7 @@ export const unzipFold = <A, B>(
 /**
  * Just like {@link zipWith} except the given function returns its result in an
  * `Effect`.
+ * @category ops
  */
 export const zipWithEffect =
   <A, B, C>(f: (self: A, that: B) => C) =>
@@ -98,6 +100,7 @@ export const zipWithEffect =
  * Returns the smallest matching tree of pairs, one taken from each tree at the
  * same position, and run the given function on this pair, returning a tree of
  * its results.
+ * @category ops
  */
 export const zipWith = <A, B, C>(
   self: Tree<A>,
@@ -132,7 +135,7 @@ export const zipWith = <A, B, C>(
  * const zippedTree: Tree<[string, number]> = pipe(right, zip(left))
  * // zippedTree = leaf(['a', 1])
  * ```
- * 
+ * @category ops
  */
 export const zip: {
   <A, B>(self: Tree<A>, that: Tree<B>): Tree<[A, B]>
