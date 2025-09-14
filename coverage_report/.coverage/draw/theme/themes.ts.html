@@ -146,7 +146,34 @@
 <a name='L81'></a><a href='#L81'>81</a>
 <a name='L82'></a><a href='#L82'>82</a>
 <a name='L83'></a><a href='#L83'>83</a>
-<a name='L84'></a><a href='#L84'>84</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a>
+<a name='L107'></a><a href='#L107'>107</a>
+<a name='L108'></a><a href='#L108'>108</a>
+<a name='L109'></a><a href='#L109'>109</a>
+<a name='L110'></a><a href='#L110'>110</a>
+<a name='L111'></a><a href='#L111'>111</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -160,6 +187,24 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -205,6 +250,9 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -218,7 +266,13 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -244,19 +298,34 @@ export const themeNames = [
   'unixRounded',
 ] as const
 &nbsp;
-/** A builtin theme name. */
+/**
+ * A builtin theme name.
+ * @category drawing
+ */
 export type ThemeName = (typeof themeNames)[number]
 &nbsp;
-/** A role for a glyph in a glyph role map. */
+/**
+ * A role for a glyph in a glyph role map.
+ * @category drawing
+ */
 export type GlyphRole = (typeof glyphRoles)[number]
 &nbsp;
-/** A glyph role mapping roles to glyphs. */
+/**
+ * A glyph role mapping roles to glyphs.
+ * @category drawing
+ */
 export type GlyphRoleMap = Record&lt;GlyphRole, string&gt;
 &nbsp;
-/** Type of the theme map. Maps theme name to theme. */
+/**
+ * Type of the theme map. Maps theme name to theme.
+ * @category drawing
+ */
 export type ThemeMap = Record&lt;ThemeName, Theme&gt;
 &nbsp;
-/** Everything required to theme a part */
+/**
+ * Everything required to theme a part.
+ * @category drawing
+ */
 export interface Theme {
   /**
    * The number of empty lines added between vertical nodes. A higher
@@ -278,7 +347,10 @@ export interface Theme {
   glyphs: GlyphRoleMap
 }
 &nbsp;
-/** Theme constructor. */
+/**
+ * Theme constructor.
+ * @category drawing
+ */
 const theme = ({
   spacing = 0,
   indents = 0,
@@ -287,7 +359,10 @@ const theme = ({
 &nbsp;
 const thin = theme({glyphs: glyphMap['thin']})
 &nbsp;
-/** Maps of theme name to theme. */
+/**
+ * Maps of theme name to theme.
+ * @category drawing
+ */
 export const themes = {
   space: theme({indents: 1, glyphs: glyphMap['space']}),
   bullets: theme({indents: 1, glyphs: glyphMap['bullets']}),
@@ -300,10 +375,16 @@ export const themes = {
   unixRounded: theme({glyphs: glyphMap['unixRounded']}),
 } satisfies ThemeMap
 &nbsp;
-/** Run a function that requires a theme. */
+/**
+ * Run a function that requires a theme.
+ * @category drawing
+ */
 export const themed = &lt;A&gt;(f: (theme: Theme) =&gt; A): typeof f =&gt; f
 &nbsp;
-/** Map over all themes to build a record theme `name` ⇒ `f(theme)`. */
+/**
+ * Map over all themes to build a record theme `name` ⇒ `f(theme)`.
+ * @category drawing
+ */
 export const mapThemes = &lt;A&gt;(
   f: (theme: Theme, name: ThemeName) =&gt; A,
 ): Record&lt;ThemeName, A&gt; =&gt;
@@ -319,7 +400,7 @@ export const mapThemes = &lt;A&gt;(
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-14T00:55:01.757Z
+                at 2025-09-14T01:02:25.483Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
