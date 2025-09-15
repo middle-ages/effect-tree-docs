@@ -11,6 +11,7 @@
 <li>Annotate nodes with their <em>level index</em>, for example <code>2.3.11.1</code>, encoding their <em>path from root</em>.</li>
 <li>Numeric and boolean folds on nodes. For example <em>sum</em> all nodes, find maximum node value for some given order, or check if all nodes are <code>true</code>. All operations <a href="../media/counts.test.ts#L176">Short-circuit</a> whenever possible.</li>
 <li>Folds can operate on entire trees, <em>replace</em> nodes, <em>annotate</em> nodes, and are composable to tuples and structs. This allows you to <em>count nodes</em>, <em>annotate with depth</em>, and <em>crop depth</em>, for example, in a single fused iteration over the tree.</li>
+<li>A zipper for navigation and efficient modification.</li>
 </ol>
 <h2 id="tree-codecs" class="tsd-anchor-link">Tree Codecs<a href="#tree-codecs" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Encode/decode losslessly to/from different tree encodings.</p>
 <table>
