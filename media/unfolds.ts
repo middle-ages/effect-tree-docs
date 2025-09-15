@@ -7,6 +7,10 @@ import {
 } from '#ops'
 import {byParentUnfold} from '#tree'
 
+/**
+ * All unfolds in a single place.
+ * @category unfolds
+ */
 export const unfolds = {
   annotateDepth: annotateDepthUnfold,
   annotateLevelLabels: annotateLevelLabelsUnfold,

@@ -112,7 +112,8 @@ export const withForest: {
 )
 
 /** A version of {@link tree} where the forest is a rest argument. */
-export const from = <A>(value: A, ...forest: Tree<A>[]) => tree(value, forest)
+export const from = <A>(value: A, ...forest: Tree<A>[]): Tree<A> =>
+  tree(value, forest)
 
 /**
  * Type guard for the tree {@link Leaf} type.
@@ -182,7 +183,6 @@ export const getBranchForest: <A>(self: Branch<A>) => ForestOf<A> = flow(
  * node is a branch.
  * @typeParam A - Tree type.
  * @param self - The tree being changed.
- * @param value - New value for the root node.
  * @returns A new tree where the root value has been replaced by the given value.
  * @category basic
  */
@@ -210,6 +210,18 @@ export const destruct = <A>(self: Tree<A>): readonly [A, readonly Tree<A>[]] =>
       onBranch: Pair.pair,
     }),
   )
+
+/**
+ * Same as {@link destruct} but only for _branches_, so you are guaranteed a
+ * non-empty forest.
+ * @typeParam A - Tree type.
+ * @param self - The branch being deconstructed.
+ * @returns A pair of the tree node value and a non-empty list of child trees.
+ * @category basic
+ */
+export const destructBranch = <A>({
+  unfixed: {node, forest},
+}: Branch<A>): [A, Array.NonEmptyReadonlyArray<Tree<A>>] => [node, forest]
 
 /**
  * Set the value of a tree root to a given value of the same type.

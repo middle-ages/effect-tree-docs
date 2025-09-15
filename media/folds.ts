@@ -30,6 +30,10 @@ import {
   xorFold,
 } from '#tree'
 
+/**
+ * All folds in a single place.
+ * @category folds
+ */
 export const folds = {
   allLeaves: allLeavesFold,
   arrays: Arrays.unsafeEncodeFold,
