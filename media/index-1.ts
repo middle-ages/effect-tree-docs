@@ -115,12 +115,12 @@ const _tree = <A>(value: A, forest: readonly Tree<A>[] = []): Tree<A> =>
  */
 export const tree: {
   <A>(value: A, forest?: readonly Tree<A>[]): Tree<A>
-  curried: <A>(forest?: readonly Tree<A>[]) => (value: A) => Tree<A>
+  curried: <A>(forest: readonly Tree<A>[]) => (value: A) => Tree<A>
   flipped: <A>(value: A) => (forest?: readonly Tree<A>[]) => Tree<A>
   tupled: <A>(pair: readonly [A, (readonly Tree<A>[])?]) => Tree<A>
 } = Object.assign(_tree, {
   curried:
-    <A>(forest?: readonly Tree<A>[]) =>
+    <A>(forest: readonly Tree<A>[]) =>
     (value: A): Tree<A> =>
       _tree(value, forest),
 
