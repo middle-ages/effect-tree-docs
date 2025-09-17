@@ -1,7 +1,3 @@
-/**
- * Tree Monad.
- * @packageDocumentation
- */
 import * as TreeF from '#treeF'
 import type {FlatMap} from '@effect/typeclass'
 import {Monad as MD} from '@effect/typeclass'

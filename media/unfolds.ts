@@ -9,7 +9,7 @@ import {byParentUnfold} from '#tree'
 
 /**
  * All unfolds in a single place.
- * @category unfolds
+ * @category unfold
  */
 export const unfolds = {
   annotateDepth: annotateDepthUnfold,

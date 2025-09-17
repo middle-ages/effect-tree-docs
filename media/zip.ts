@@ -1,16 +1,4 @@
-/**
- * Zip trees.
- * @packageDocumentation
- */
-import {
-  fixTree,
-  getValue,
-  leaf,
-  match,
-  treeCata,
-  withForest,
-  type Tree,
-} from '#tree'
+import {fixTree, getValue, leaf, match, tree, type Tree, treeCata} from '#tree'
 import * as TreeF from '#treeF'
 import {Array, Effect, Function, pipe} from 'effect'
 
@@ -84,7 +72,7 @@ export const zipWithEffect =
                     selfForest,
                     Array.zip(thatForest),
                     Effect.forEach(zip),
-                    Effect.map(withForest(value)),
+                    Effect.map(tree.flipped(value)),
                   ),
                 ),
             }),

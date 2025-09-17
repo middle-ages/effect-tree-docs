@@ -1,7 +1,3 @@
-/**
- * Tree Order.
- * @packageDocumentation
- */
 import {Array, Function, K, pipe, type Order} from '#util'
 import {Effect, identity} from 'effect'
 import {match} from '../tree/index.js'

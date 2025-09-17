@@ -1,7 +1,3 @@
-/**
- * Counting nodes and tree levels.
- * @packageDocumentation
- */
 import {
   treeCata,
   treeCataEffect,

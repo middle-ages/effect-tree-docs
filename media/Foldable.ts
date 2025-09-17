@@ -1,7 +1,3 @@
-/**
- * Tree Foldable.
- * @packageDocumentation
- */
 import * as TreeF from '#treeF'
 import {fanout} from '#util/Pair'
 import {Foldable as FO, Monoid} from '@effect/typeclass'

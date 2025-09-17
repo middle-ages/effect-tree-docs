@@ -32,7 +32,7 @@ import {
 
 /**
  * All folds in a single place.
- * @category folds
+ * @category fold
  */
 export const folds = {
   allLeaves: allLeavesFold,

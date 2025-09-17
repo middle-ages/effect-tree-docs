@@ -1,10 +1,6 @@
-/**
- * Tree Covariant.
- * @packageDocumentation
- */
 import {Covariant as CO} from '@effect/typeclass'
 import {Effect, flow, Function, pipe} from 'effect'
-import {withForest, branch, leaf, match} from '../tree/index.js'
+import {branch, leaf, match, tree} from '../tree/index.js'
 import type {Tree, TreeTypeLambda} from '../tree/types.js'
 
 /**
@@ -43,7 +39,7 @@ mapEffect.pre = <A, B, E = unknown, R = never>(
           pipe(
             forest,
             Effect.forEach(mapEffect.pre(f)),
-            Effect.map(withForest(value)),
+            Effect.map(tree.flipped(value)),
           ),
         ),
       ),

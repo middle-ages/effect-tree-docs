@@ -1,7 +1,3 @@
-/**
- * Tree Applicative.
- * @packageDocumentation
- */
 import {
   Applicative as AP,
   Monoid,
@@ -66,6 +62,7 @@ export const Applicative: AP.Applicative<TreeTypeLambda> = {
 /**
  * Creates an `Semigroup` for a `Tree<A>` type, given a `Semigroup`
  * for the underlying type `A`.
+ * @category instances
  */
 export const getSemigroup: <A>(
   F: Semigroup.Semigroup<A>,
@@ -74,6 +71,7 @@ export const getSemigroup: <A>(
 /**
  * Creates a `Monoid` for a `Tree<A>` type, given a `Monoid`
  * for the underlying type `A`. `empty` will be a `leaf(M.empty)`.
+ * @category instances
  */
 export const getMonoid: <A>(F: Monoid.Monoid<A>) => Monoid.Monoid<Tree<A>> =
   AP.getMonoid(Applicative)
