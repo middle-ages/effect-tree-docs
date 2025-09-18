@@ -4,26 +4,25 @@ import {pipe} from 'effect'
 import {assertDrawTree, drawTree} from '#test'
 import {getTheme} from '#draw'
 
-describe('drawTree', () => {
-  test('leaf', () => {
-    pipe('a', of, assertDrawTree('\n─a'))
-  })
+test('leaf', () => {
+  pipe('a', of, assertDrawTree('\n─a'))
+})
 
-  test('One branch one leaf', () => {
-    pipe(branch('a', [of('b')]), assertDrawTree('\n┬a\n└─b'))
-  })
+test('One branch one leaf', () => {
+  pipe(branch('a', [of('b')]), assertDrawTree('\n┬a\n└─b'))
+})
 
-  describe(`multiline labels`, () => {
-    test(`leaf`, () => {
-      const tree = branch('a', [
-        of('b1\nb2\nb3'),
-        branch('c', [of('d'), of('e1\ne2\ne3'), of('f')]),
-        of('g1\ng2\ng3'),
-      ])
+describe(`multiline labels`, () => {
+  test(`leaf`, () => {
+    const tree = branch('a', [
+      of('b1\nb2\nb3'),
+      branch('c', [of('d'), of('e1\ne2\ne3'), of('f')]),
+      of('g1\ng2\ng3'),
+    ])
 
-      pipe(
-        tree,
-        assertDrawTree(`
+    pipe(
+      tree,
+      assertDrawTree(`
 ┬a
 ├─b1
 │ b2
@@ -37,19 +36,19 @@ describe('drawTree', () => {
 └─g1
   g2
   g3`),
-      )
-    })
+    )
+  })
 
-    test(`branch`, () => {
-      const tree = branch('a', [
-        of('b'),
-        branch('c1\nc2\nc3', [of('d'), of('e'), of('f')]),
-        of('g'),
-      ])
+  test(`branch`, () => {
+    const tree = branch('a', [
+      of('b'),
+      branch('c1\nc2\nc3', [of('d'), of('e'), of('f')]),
+      of('g'),
+    ])
 
-      pipe(
-        tree,
-        assertDrawTree(`
+    pipe(
+      tree,
+      assertDrawTree(`
 ┬a
 ├─b
 ├┬c1
@@ -59,19 +58,19 @@ describe('drawTree', () => {
 │├─e
 │└─f
 └─g`),
-      )
-    })
+    )
+  })
 
-    test(`both`, () => {
-      const tree = branch('a1\na2', [
-        of('b1\nb2'),
-        branch('c1\nc2', [of('d1\nd2'), of('e1\ne2')]),
-        branch('f1\nf2', [of('g1\ng2')]),
-      ])
+  test(`both`, () => {
+    const tree = branch('a1\na2', [
+      of('b1\nb2'),
+      branch('c1\nc2', [of('d1\nd2'), of('e1\ne2')]),
+      branch('f1\nf2', [of('g1\ng2')]),
+    ])
 
-      pipe(
-        tree,
-        assertDrawTree(`
+    pipe(
+      tree,
+      assertDrawTree(`
 ┬a1
 │a2
 ├─b1
@@ -86,21 +85,21 @@ describe('drawTree', () => {
  │f2
  └─g1
    g2`),
-      )
-    })
+    )
   })
+})
 
-  describe('nodeCount≔11', () => {
-    const tree = branch('a', [
-      of('b'),
-      branch('c', [of('d'), of('e')]),
-      branch('f', [of('g'), branch('h', [of('i'), of('j')]), of('k')]),
-    ])
+describe('nodeCount≔11', () => {
+  const tree = branch('a', [
+    of('b'),
+    branch('c', [of('d'), of('e')]),
+    branch('f', [of('g'), branch('h', [of('i'), of('j')]), of('k')]),
+  ])
 
-    test('theme≔“thin”', () => {
-      pipe(
-        tree,
-        assertDrawTree(`
+  test('theme≔“thin”', () => {
+    pipe(
+      tree,
+      assertDrawTree(`
 ┬a
 ├─b
 ├┬c
@@ -112,11 +111,11 @@ describe('drawTree', () => {
  │├─i
  │└─j
  └─k`),
-      )
-    })
+    )
+  })
 
-    test('theme≔“doubleSpaceThin”', () => {
-      expect(drawTree(tree, getTheme('doubleSpaceThin'))).toBe(`
+  test('theme≔“doubleSpaceThin”', () => {
+    expect(drawTree(tree, getTheme('doubleSpaceThin'))).toBe(`
 ┬a
 │
 ├──b
@@ -139,10 +138,10 @@ describe('drawTree', () => {
   │
   └──k
 `)
-    })
+  })
 
-    test('theme≔“rounded”', () => {
-      expect(drawTree(tree, getTheme('rounded'))).toBe(`
+  test('theme≔“rounded”', () => {
+    expect(drawTree(tree, getTheme('rounded'))).toBe(`
 ┬a
 ├─b
 ├┬c
@@ -154,11 +153,11 @@ describe('drawTree', () => {
  │├─i
  │╰─j
  ╰─k`)
-    })
+  })
 
-    describe('theme≔“unix”', () => {
-      test('single line nodes', () => {
-        expect(drawTree(tree, getTheme('unix'))).toBe(`
+  describe('theme≔“unix”', () => {
+    test('single line nodes', () => {
+      expect(drawTree(tree, getTheme('unix'))).toBe(`
 ─a
  ├─b
  ├─c
@@ -170,16 +169,16 @@ describe('drawTree', () => {
    │ ├─i
    │ └─j
    └─k`)
-      })
+    })
 
-      test('multi line nodes', () => {
-        const tree = branch('a1\na2', [
-          of('b'),
-          branch('c1\nc2', [of('d'), of('e1\ne2')]),
-          branch('f', [of('g1\ng2')]),
-        ])
+    test('multi line nodes', () => {
+      const tree = branch('a1\na2', [
+        of('b'),
+        branch('c1\nc2', [of('d'), of('e1\ne2')]),
+        branch('f', [of('g1\ng2')]),
+      ])
 
-        expect(drawTree(tree, getTheme('unix'))).toBe(`
+      expect(drawTree(tree, getTheme('unix'))).toBe(`
 ─a1
  │a2
  ├─b
@@ -191,11 +190,11 @@ describe('drawTree', () => {
  └─f
    └─g1
       g2`)
-      })
     })
+  })
 
-    test('theme≔“unixRounded”', () => {
-      expect(drawTree(tree, getTheme('unixRounded'))).toBe(`
+  test('theme≔“unixRounded”', () => {
+    expect(drawTree(tree, getTheme('unixRounded'))).toBe(`
 ─a
  ├─b
  ├─c
@@ -207,10 +206,10 @@ describe('drawTree', () => {
    │ ├─i
    │ ╰─j
    ╰─k`)
-    })
+  })
 
-    test('theme≔“thick”', () => {
-      expect(drawTree(tree, getTheme('thick'))).toBe(`
+  test('theme≔“thick”', () => {
+    expect(drawTree(tree, getTheme('thick'))).toBe(`
 ┳a
 ┣━b
 ┣┳c
@@ -222,10 +221,10 @@ describe('drawTree', () => {
  ┃┣━i
  ┃┗━j
  ┗━k`)
-    })
+  })
 
-    test('theme≔“space”', () => {
-      expect(drawTree(tree, getTheme('space'))).toBe(`
+  test('theme≔“space”', () => {
+    expect(drawTree(tree, getTheme('space'))).toBe(`
  a
    b
    c
@@ -237,10 +236,10 @@ describe('drawTree', () => {
        i
        j
      k`)
-    })
+  })
 
-    test('theme≔“bullets”', () => {
-      expect(drawTree(tree, getTheme('bullets'))).toBe(`
+  test('theme≔“bullets”', () => {
+    expect(drawTree(tree, getTheme('bullets'))).toBe(`
  ∘a
    ∙b
    ∘c
@@ -252,10 +251,10 @@ describe('drawTree', () => {
        ∙i
        ∙j
      ∙k`)
-    })
+  })
 
-    test('theme≔“ascii”', () => {
-      expect(drawTree(tree, getTheme('ascii'))).toBe(`
+  test('theme≔“ascii”', () => {
+    expect(drawTree(tree, getTheme('ascii'))).toBe(`
 +a
 +--b
 +-+c
@@ -267,6 +266,5 @@ describe('drawTree', () => {
   | +--i
   | '--j
   '--k`)
-    })
   })
 })
