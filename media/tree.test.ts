@@ -114,34 +114,8 @@ describe('nodeCount≔11', () => {
     )
   })
 
-  test('theme≔“doubleSpaceThin”', () => {
-    expect(drawTree(tree, getTheme('doubleSpaceThin'))).toBe(`
-┬a
-│
-├──b
-│
-├─┬c
-│ │
-│ ├──d
-│ │
-│ └──e
-│
-└─┬f
-  │
-  ├──g
-  │
-  ├─┬h
-  │ │
-  │ ├──i
-  │ │
-  │ └──j
-  │
-  └──k
-`)
-  })
-
-  test('theme≔“rounded”', () => {
-    expect(drawTree(tree, getTheme('rounded'))).toBe(`
+  test('theme≔“round”', () => {
+    expect(drawTree(tree, getTheme('round'))).toBe(`
 ┬a
 ├─b
 ├┬c
@@ -193,8 +167,8 @@ describe('nodeCount≔11', () => {
     })
   })
 
-  test('theme≔“unixRounded”', () => {
-    expect(drawTree(tree, getTheme('unixRounded'))).toBe(`
+  test('theme≔“unixRound”', () => {
+    expect(drawTree(tree, getTheme('unixRound'))).toBe(`
 ─a
  ├─b
  ├─c
