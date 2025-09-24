@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.3% </span>
+                <span class="strong">92.64% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>63/69</span>
+                <span class='fraction'>63/68</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">94.11% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>15/15</span>
+                <span class='fraction'>16/17</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.3% </span>
+                <span class="strong">92.64% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>63/69</span>
+                <span class='fraction'>63/68</span>
             </div>
         
             
@@ -241,18 +241,7 @@
 <a name='L176'></a><a href='#L176'>176</a>
 <a name='L177'></a><a href='#L177'>177</a>
 <a name='L178'></a><a href='#L178'>178</a>
-<a name='L179'></a><a href='#L179'>179</a>
-<a name='L180'></a><a href='#L180'>180</a>
-<a name='L181'></a><a href='#L181'>181</a>
-<a name='L182'></a><a href='#L182'>182</a>
-<a name='L183'></a><a href='#L183'>183</a>
-<a name='L184'></a><a href='#L184'>184</a>
-<a name='L185'></a><a href='#L185'>185</a>
-<a name='L186'></a><a href='#L186'>186</a>
-<a name='L187'></a><a href='#L187'>187</a>
-<a name='L188'></a><a href='#L188'>188</a>
-<a name='L189'></a><a href='#L189'>189</a>
-<a name='L190'></a><a href='#L190'>190</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L179'></a><a href='#L179'>179</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -284,7 +273,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -326,18 +315,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -361,7 +339,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -519,17 +497,6 @@ export const repeatText: {
 )
 &nbsp;
 /**
- * A part that is `width` wide composed entirely of the horizontal line glyph.
- * @example
- * import {Draw} from 'effect-tree'
- *
- * const line = Draw.hLine('3')
- * // ‘───’
- * @category drawing
- */
-export const hLine: (width: number) =&gt; Part = repeatText('─')
-&nbsp;
-/**
  * Returns the empty part if the given width is zero, else a text part at the
  * given width filled with the optionally provided _indent_ string. The default
  * indent string is a single space character.
@@ -545,12 +512,12 @@ export const hLine: (width: number) =&gt; Part = repeatText('─')
  * @category drawing
  */
 export const hIndent: {
-  (width: number, indent?: string): Part
-  (indent?: string): (width: number) =&gt; Part
+  (repeat: number, indent?: string): Part
+  (indent?: string): (repeat: number) =&gt; Part
 } = dual(
   2,
-  (width: number, indent: string = ' '): Part =&gt;
-<span class="cstat-no" title="statement not covered" >    width === 0 ? emptyPart : repeatText(width, indent),</span>
+  (repeat: number, indent: string = ' '): Part =&gt;
+    repeat === <span class="branch-0 cbranch-no" title="branch not covered" >0 ? emptyPart : r</span>epeatText(repeat, indent),
 )
 &nbsp;
 /**
@@ -637,7 +604,7 @@ export const spacePad: {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-22T23:44:23.610Z
+                at 2025-09-24T21:49:18.001Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

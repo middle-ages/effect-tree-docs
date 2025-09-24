@@ -2,8 +2,8 @@
 <li><a href="#tree-operations">Tree Operations</a></li>
 <li><a href="#tree-codecs">Tree Codecs</a></li>
 <li><a href="#tree-instances">Tree Instances</a></li>
-<li><a href="#drawing-trees">Drawing Trees</a></li>
 <li><a href="#tree-generation">Tree Generation</a></li>
+<li><a href="#drawing-trees">Drawing Trees</a></li>
 </ol>
 <h2 id="tree-operations" class="tsd-anchor-link">Tree Operations<a href="#tree-operations" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ol>
 <li>A generic tree data structure and all the basic functions required to manipulate immutable instances.</li>
@@ -24,40 +24,40 @@
 <tbody>
 <tr>
 <td>Nested arrays</td>
-<td><a href="../media/arrays">source</a></td>
+<td><a href="https://github.com/middle-ages/effect-tree/tree/main/src/codec/arrays">source</a></td>
 </tr>
 <tr>
 <td>Edge lists</td>
-<td><a href="../media/edges">source</a></td>
-</tr>
-<tr>
-<td>Path List</td>
-<td><a href="../media/paths">source</a></td>
-</tr>
-<tr>
-<td>Prüfer codes</td>
-<td><a href="../media/prufer">source</a></td>
+<td><a href="https://github.com/middle-ages/effect-tree/tree/main/src/codec/edges">source</a></td>
 </tr>
 <tr>
 <td>Indented string</td>
-<td><a href="../media/indented">source</a></td>
+<td><a href="https://github.com/middle-ages/effect-tree/tree/main/src/codec/indented">source</a></td>
+</tr>
+<tr>
+<td>Path List</td>
+<td><a href="https://github.com/middle-ages/effect-tree/tree/main/src/codec/paths">source</a></td>
+</tr>
+<tr>
+<td>Prüfer codes</td>
+<td><a href="https://github.com/middle-ages/effect-tree/tree/main/src/codec/prufer">source</a></td>
 </tr>
 </tbody>
 </table>
-<p><a href="../media/Isomorphism.test.ts">Law tests</a> test encode/decode round-trip.</p>
+<p><a href="https://github.com/middle-ages/effect-tree/blob/main/src/codec/Isomorphism.test.ts">Law tests</a> test encode/decode round-trip.</p>
 <h2 id="tree-instances" class="tsd-anchor-link">Tree Instances<a href="#tree-instances" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><table>
 <thead>
 <tr>
 <th>Name</th>
 <th>Instance</th>
 <th>Typeclass</th>
-<th>Law</th>
+<th>Laws</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Applicative</td>
-<td><a href="../media/Applicative.ts">source</a></td>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/src/instances/Applicative.ts">source</a></td>
 <td><a href="https://github.com/Effect-TS/effect/blob/main/packages/typeclass/src/Applicative.ts">source</a></td>
 <td><a href="https://github.com/middle-ages/effect-ts-laws/tree/main/src/laws/typeclass/parameterized/Applicative.ts">source</a></td>
 </tr>
@@ -69,42 +69,78 @@
 </tr>
 <tr>
 <td>Equivalence</td>
-<td><a href="../media/Equivalence.ts">source</a></td>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/src/instances/Equivalence.ts">source</a></td>
 <td><a href="https://github.com/Effect-TS/effect/blob/main/packages/effect/src/Equivalence.ts">source</a></td>
 <td><a href="https://github.com/middle-ages/effect-ts-laws/tree/main/src/laws/typeclass/concrete/Equivalence.ts">source</a></td>
 </tr>
 <tr>
 <td>Foldable</td>
-<td><a href="../media/Foldable.ts">source</a></td>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/src/instances/Foldable.ts">source</a></td>
 <td><a href="https://github.com/Effect-TS/effect/blob/main/packages/typeclass/src/Foldable.ts">source</a></td>
 <td><a href="https://github.com/middle-ages/effect-ts-laws/tree/main/src/laws/typeclass/parameterized/Foldable.ts">source</a></td>
 </tr>
 <tr>
 <td>Monad</td>
-<td><a href="../media/Monad.ts">source</a></td>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/src/instances/Monad.ts">source</a></td>
 <td><a href="https://github.com/Effect-TS/effect/blob/main/packages/typeclass/src/Monad.ts">source</a></td>
 <td><a href="https://github.com/middle-ages/effect-ts-laws/tree/main/src/laws/typeclass/parameterized/Monad.ts">source</a></td>
 </tr>
 <tr>
 <td>Order</td>
-<td><a href="../media/Order.ts">source</a></td>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/src/instances/Order.ts">source</a></td>
 <td><a href="https://github.com/Effect-TS/effect/blob/main/packages/effect/src/Order.ts">source</a></td>
 <td><a href="https://github.com/middle-ages/effect-ts-laws/tree/main/src/laws/typeclass/concrete/Order.ts">source</a></td>
 </tr>
 <tr>
 <td>Traversable</td>
-<td><a href="../media/Traversable.ts">source</a></td>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/src/instances/Traversable.ts">source</a></td>
 <td><a href="https://github.com/Effect-TS/effect/blob/main/packages/typeclass/src/Traversable.ts">source</a></td>
 <td><a href="https://github.com/middle-ages/effect-ts-laws/tree/main/src/laws/typeclass/parameterized/Traversable.ts">source</a></td>
 </tr>
 </tbody>
 </table>
 <p>Laws are listed
-<em><a href="https://middle-ages.github.io/effect-ts-laws-docs/catalog-of-laws.html">in the book of laws</a></em>.</p>
-<p><code>map</code>/<code>flatMap</code>/<code>traverse</code> and similar functions that take <em>effectful</em> functions. You can choose the traversal order when running these functions as pre-order (parents <em>before</em> their children) or post-order (parents <em>after</em> their children).</p>
-<h2 id="drawing-trees" class="tsd-anchor-link">Drawing Trees<a href="#drawing-trees" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Draw trees for terminal output. Customize layout, ANSI colors, and symbols.</p>
+<em><a href="https://middle-ages.github.io/effect-ts-laws-docs/catalog-of-laws.html">in the book of laws</a></em>
+and law tests
+<a href="https://github.com/middle-ages/effect-tree/blob/main/src/instances/laws.test.ts">can be found here</a>.</p>
+<p>Functions like <a href="https://github.com/middle-ages/effect-tree/blob/main/src/instances/Covariant.ts#L11">mapEffect</a> and
+<a href="https://github.com/middle-ages/effect-tree/blob/main/src/instances/Traversable.ts#L60">traverseEffect</a> that run
+a <em>effectful</em> functions on the tree have pre-order variants at the <code>pre</code> key of
+the function. For example, the
+<a href="https://github.com/middle-ages/effect-tree/blob/main/src/instances/Covariant.ts#L31">mapEffect.pre</a>
+function will traverse the tree in depth-first pre-order.</p>
 <h2 id="tree-generation" class="tsd-anchor-link">Tree Generation<a href="#tree-generation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><ol>
 <li>A customizable arbitrary for trees with variants for branches, ordered numeric trees, and more.</li>
 <li>Enumerate trees and go forwards and backwards in the list of possible labeled trees for better control of test data.</li>
 </ol>
-</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-internal" name="internal"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Internal</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#features"><span>Features</span></a><ul><li><a href="#tree-operations"><span>Tree <wbr/>Operations</span></a></li><li><a href="#tree-codecs"><span>Tree <wbr/>Codecs</span></a></li><li><a href="#tree-instances"><span>Tree <wbr/>Instances</span></a></li><li><a href="#drawing-trees"><span>Drawing <wbr/>Trees</span></a></li><li><a href="#tree-generation"><span>Tree <wbr/>Generation</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">effect-tree</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer></footer><div class="overlay"></div></body></html>
+<p>| <a href="https://github.com/middle-ages/effect-tree/blob/main/examples/basic.ts">Basic</a>         | Create a tree, add/remove nodes, and other basic use-cases.               |
+| <a href="https://github.com/middle-ages/effect-tree/blob/main/examples/codecs.ts">Codecs</a>       | Encode/decode the same tree through all codecs.                           |
+| <a href="https://github.com/middle-ages/effect-tree/blob/main/examples/draw.ts">Draw</a>           | Draw trees in various themes.                                             |
+| <a href="https://github.com/middle-ages/effect-tree/blob/main/examples/fibonacci.ts">Fibonacci</a> | A custom fold: unfold the Fibonacci sequence into a linear tree.          |
+| <a href="https://github.com/middle-ages/effect-tree/blob/main/examples/folds.ts">Folds</a>         | Fusing folds into tuples and structs.                                     |
+| <a href="https://github.com/middle-ages/effect-tree/blob/main/examples/genealogy.ts">Genealogy</a> | Level labels, bottom grounded subtrees, and encoding to indented strings. |
+| <a href="https://github.com/middle-ages/effect-tree/blob/main/examples/generate.ts">Generate</a>   | Enumerate and generate trees.                                             |
+| <a href="https://github.com/middle-ages/effect-tree/blob/main/examples/layout.ts">Layout</a>       | Alternate tree layouts using the <code>Draw</code> module.                           |</p>
+<h2 id="drawing-trees" class="tsd-anchor-link">Drawing Trees<a href="#drawing-trees" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Draw trees for terminal output. Customize layout and symbols, and compose
+layouts from <em>parts</em>. All functions are ANSI text aware and should work with
+styled text and wide characters.</p>
+<p>Click on the example screenshots to go to the source code.</p>
+<ul>
+<li>
+<p>You can place anything in multiline node labels, even boxes.
+<a title="boxes example" href="https://github.com/middle-ages/effect-tree/blob/main/examples/genealogy.ts"><img src='../media/genealogy.png' alt='Output from examples/draw.ts' width=150  align="right"></a></p>
+</li>
+<li>
+<p>Show emojis.</p>
+</li>
+</ul>
+<p><a title="emoji example" href="https://github.com/middle-ages/effect-tree/blob/main/examples/layout.ts"><img src='../media/basic.png' alt='Output from examples/basic.ts' width=200></a></p>
+<ul>
+<li>Build custom layouts.</li>
+</ul>
+<p><a title="layout example" href="https://github.com/middle-ages/effect-tree/blob/main/examples/layout.ts"><img src='../media/ternary-tree.png' alt='Output from examples/layout.ts' width=900></a></p>
+<ul>
+<li>Theme the glyphs.</li>
+</ul>
+<p><a title="themes example" href="https://github.com/middle-ages/effect-tree/blob/main/examples/draw.ts"><img src='../media/draw.png' alt='Output from examples/draw.ts' width=600></a></p>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-internal" name="internal"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Internal</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#features"><span>Features</span></a><ul><li><a href="#tree-operations"><span>Tree <wbr/>Operations</span></a></li><li><a href="#tree-codecs"><span>Tree <wbr/>Codecs</span></a></li><li><a href="#tree-instances"><span>Tree <wbr/>Instances</span></a></li><li><a href="#tree-generation"><span>Tree <wbr/>Generation</span></a></li><li><a href="#drawing-trees"><span>Drawing <wbr/>Trees</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">effect-tree</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer></footer><div class="overlay"></div></body></html>

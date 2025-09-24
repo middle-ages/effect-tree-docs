@@ -128,7 +128,26 @@
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a>
+<a name='L78'></a><a href='#L78'>78</a>
+<a name='L79'></a><a href='#L79'>79</a>
+<a name='L80'></a><a href='#L80'>80</a>
+<a name='L81'></a><a href='#L81'>81</a>
+<a name='L82'></a><a href='#L82'>82</a>
+<a name='L83'></a><a href='#L83'>83</a>
+<a name='L84'></a><a href='#L84'>84</a>
+<a name='L85'></a><a href='#L85'>85</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -138,10 +157,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">150x</span>
-<span class="cline-any cline-yes">694x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -150,6 +165,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">151x</span>
+<span class="cline-any cline-yes">693x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -157,12 +195,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">135x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">137x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-yes">19x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -196,38 +234,57 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import type {EndoOf} from '#util/Function'
 import {forHorizontalAlignments, type HorizontalAlignment} from '../align.js'
 import {defaultHStrut, type HStrut} from '../struts.js'
-import {
-  Column,
-  type HorizontalOps,
-  type Part,
-  type VerticalOp,
-} from './types.js'
+import {Column, type Part} from './types.js'
+&nbsp;
+/**
+ * @category drawing
+ */
+export interface ColumnOp {
+  (that: Part, left?: HStrut, right?: HStrut): EndoOf&lt;Part&gt;
+}
+&nbsp;
+/**
+ * @category drawing
+ */
+export type ColumnOps = Record&lt;HorizontalAlignment, ColumnOp&gt;
 &nbsp;
 const _column =
   (hAlign: HorizontalAlignment = 'center') =&gt;
-  (cells: Part[], hStrut = defaultHStrut): Column =&gt;
-    Column({hAlign, hStrut})(cells)
+  (cells: Part[], left = defaultHStrut, right = left): Column =&gt;
+    Column({hAlign, left, right})(cells)
 &nbsp;
 /**
  * Combine parts vertically.
  *
  * The 1st cell will be drawn at the top of the column, the final at the bottom.
+ *
+ * The alignment is given in the first argument list. If none is given, nodes are
+ * aligned to the _center_.
+ *
+ * The horizontal struts are given in the second argument list, as optional
+ * arguments following the `cells` argument. If only a single strut is given,
+ * it is used for both the left and right side of the aligned part.
+ *
+ * If two struts are given, the first is used for the left side and the second
+ * for the right side.
  * @category drawing
  */
 export const column: ((
   hAlign?: HorizontalAlignment,
-) =&gt; (cells: Part[], hStrut?: HStrut) =&gt; Part) &amp;
-  Record&lt;HorizontalAlignment, (cells: Part[], hStruct?: HStrut) =&gt; Part&gt; =
-  Object.assign(_column, forHorizontalAlignments(_column))
+) =&gt; (cells: Part[], left?: HStrut, right?: HStrut) =&gt; Part) &amp;
+  Record&lt;
+    HorizontalAlignment,
+    (cells: Part[], left?: HStrut, right?: HStrut) =&gt; Part
+  &gt; = Object.assign(_column, forHorizontalAlignments(_column))
 &nbsp;
 const _below =
-  (hAlign: HorizontalAlignment = 'center'): VerticalOp =&gt;
-  (above, hStrut = defaultHStrut) =&gt;
+  (hAlign: HorizontalAlignment = 'center'): ColumnOp =&gt;
+  (above, left = defaultHStrut, right = left) =&gt;
   below =&gt;
-    Column({hAlign, hStrut})([above, below])
+    Column({hAlign, left, right})([above, below])
 &nbsp;
-const _above: typeof _below = hAlign =&gt; (below, hStrut) =&gt; above =&gt;
-  _below(hAlign)(above, hStrut)(below)
+const _above: typeof _below = hAlign =&gt; (below, left, right) =&gt; above =&gt;
+  _below(hAlign)(above, left, right)(below)
 &nbsp;
 /**
  * Add the `below` part below the `above` part. See {@link above} for a flipped
@@ -235,12 +292,12 @@ const _above: typeof _below = hAlign =&gt; (below, hStrut) =&gt; above =&gt;
  * @category drawing
  */
 export const below: {
-  (hAlign?: HorizontalAlignment): VerticalOp
-} &amp; HorizontalOps = Object.assign(
+  (hAlign?: HorizontalAlignment): ColumnOp
+} &amp; ColumnOps = Object.assign(
   (hAlign?: HorizontalAlignment) =&gt;
-    (above: Part, hStrut?: HStrut): EndoOf&lt;Part&gt; =&gt;
+    (above: Part, left?: HStrut, right?: HStrut): EndoOf&lt;Part&gt; =&gt;
     below =&gt;
-      _below(hAlign)(above, hStrut)(below),
+      _below(hAlign)(above, left, right)(below),
   forHorizontalAlignments(_below),
 )
 &nbsp;
@@ -250,12 +307,12 @@ export const below: {
  * @category drawing
  */
 export const above: {
-  (hAlign?: HorizontalAlignment): VerticalOp
-} &amp; HorizontalOps = Object.assign(
+  (hAlign?: HorizontalAlignment): ColumnOp
+} &amp; ColumnOps = Object.assign(
   (hAlign?: HorizontalAlignment) =&gt;
-    (below: Part, hStrut?: HStrut): EndoOf&lt;Part&gt; =&gt;
+    (below: Part, left?: HStrut, right?: HStrut): EndoOf&lt;Part&gt; =&gt;
     above =&gt;
-      _above(hAlign)(below, hStrut)(above),
+      _above(hAlign)(below, left, right)(above),
   forHorizontalAlignments(_above),
 )
 &nbsp;</pre></td></tr></table></pre>
@@ -265,7 +322,7 @@ export const above: {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-22T23:44:23.610Z
+                at 2025-09-24T21:49:18.001Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
