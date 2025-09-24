@@ -169,7 +169,7 @@ export const getValue: <A>(self: Tree<A>) => A = flow(unfixTree, getValueF)
  * Get the forest of a branch node.
  * @typeParam A - Underlying tree type.
  * @param self - the branch to query.
- * @returns The non-empty forest of thee given branch..
+ * @returns The non-empty forest of the given branch..
  * @category basic
  */
 export const getBranchForest: <A>(self: Branch<A>) => ForestOf<A> = flow(
