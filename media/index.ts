@@ -9,6 +9,7 @@ import type {BranchF, LeafF, MatcherF, TreeF} from './types.js'
  * tree it would be `number`.
  * @typeParam C - The child node type, also called the _carrier type_.
  * @category fold
+ * @function
  */
 export const leafF = <A>(value: A): TreeF<A> => ({node: value})
 
@@ -18,6 +19,7 @@ export const leafF = <A>(value: A): TreeF<A> => ({node: value})
  * tree it would be `number`.
  * @typeParam C - The child node type, also called the _carrier type_.
  * @category fold
+ * @function
  */
 export const branchF: {
   <A, C>(value: A, forest: NonEmptyReadonlyArray<C>): BranchF<A, C>
@@ -47,6 +49,7 @@ export const branchF: {
  * tree it would be `number`.
  * @typeParam C - The child node type, also called the _carrier type_.
  * @category fold
+ * @function
  */
 export const treeF: {
   <A, C>(value: A, forest: readonly C[]): TreeF<A, C>
@@ -78,6 +81,7 @@ export const treeF: {
  * tree it would be `number`.
  * @typeParam C - The child node type, also called the _carrier type_.
  * @category fold
+ * @function
  */
 export const withForest: {
   <A, C>(forest: C[], value: A): TreeF<A, C>
@@ -93,6 +97,7 @@ export const withForest: {
  * tree it would be `number`.
  * @typeParam C - The child node type, also called the _carrier type_.
  * @category fold
+ * @function
  */
 export const isLeaf = <A, C>(self: TreeF<A, C>): self is LeafF<A> =>
   !('forest' in self)
@@ -103,6 +108,7 @@ export const isLeaf = <A, C>(self: TreeF<A, C>): self is LeafF<A> =>
  * tree it would be `number`.
  * @typeParam C - The child node type, also called the _carrier type_.
  * @category fold
+ * @function
  */
 export const isBranch = <A, C>(treeF: TreeF<A, C>): treeF is BranchF<A, C> =>
   !isLeaf(treeF)
@@ -114,6 +120,7 @@ export const isBranch = <A, C>(treeF: TreeF<A, C>): treeF is BranchF<A, C> =>
  * @typeParam C - The child node type, also called the _carrier type_.
  * @typeParam R - The result type of the given functions.
  * @category fold
+ * @function
  */
 export const match =
   <A, C, R>({onLeaf, onBranch}: MatcherF<A, C, R>) =>
@@ -128,6 +135,7 @@ export const match =
  * @returns A pair of the tree root node value and a possibly empty list of
  * children of the type `C`.
  * @category fold
+ * @function
  */
 export const destruct = <A, B>(self: TreeF<A, B>): readonly [A, B[]] =>
   pipe(
@@ -145,6 +153,7 @@ export const destruct = <A, B>(self: TreeF<A, B>): readonly [A, B[]] =>
  * @typeParam C - The child node type, also called the _carrier type_.
  * @returns Numeric length of node forest.
  * @category fold
+ * @function
  */
 export const length: <A, C>(self: TreeF<A, C>) => number = match({
   onLeaf: () => 0,
@@ -158,6 +167,7 @@ export const length: <A, C>(self: TreeF<A, C>) => number = match({
  * @typeParam C - The child node type, also called the _carrier type_.
  * @returns Root node value.
  * @category fold
+ * @function
  */
 export const getValue = <A, C>({node}: TreeF<A, C>): A => node
 
@@ -168,6 +178,7 @@ export const getValue = <A, C>({node}: TreeF<A, C>): A => node
  * @typeParam C - The child node type, also called the _carrier type_.
  * @returns Root node forest.
  * @category fold
+ * @function
  */
 export const getForest = <A, C>(self: TreeF<A, C>): readonly C[] =>
   isBranch(self) ? self.forest : []
@@ -179,6 +190,7 @@ export const getForest = <A, C>(self: TreeF<A, C>): readonly C[] =>
  * @typeParam C - The child node type, also called the _carrier type_.
  * @returns Branch forest.
  * @category fold
+ * @function
  */
 export const getBranchForest = <A, C>({
   forest,
@@ -192,6 +204,7 @@ export const getBranchForest = <A, C>({
  * @typeParam C - The child node type, also called the _carrier type_.
  * @returns A tree with the new value.
  * @category fold
+ * @function
  */
 export const setValue: {
   <A, B, C>(value: B, self: TreeF<A, C>): TreeF<B, C>
@@ -217,6 +230,7 @@ export const setValue: {
  * @typeParam C - The child node type, also called the _carrier type_.
  * @returns A tree with the new forest.
  * @category fold
+ * @function
  */
 export const setForest: {
   <A, B, C>(forest: Array.NonEmptyArray<B>, self: TreeF<A, C>): TreeF<A, B>
@@ -243,6 +257,7 @@ export const setForest: {
  * @param f - will be used as the mapping function.
  * @returns A tree with the mapped value.
  * @category fold
+ * @function
  */
 export const mapValue: {
   <A, B, C>(self: TreeF<A, C>, f: (a: A) => B): TreeF<B, C>

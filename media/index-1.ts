@@ -15,11 +15,17 @@ import type {Branch, ForestOf, Leaf, Matcher, Tree} from './types.js'
 
 export const [
   /**
+   * Convert the non-recursive version of the tree with children of type
+   * `Tree<A>` into the recursive {@link  Tree} type.
    * @category basic
+   * @function
    */
   fixTree,
   /**
+   * Convert the recursive version of the tree to a non-recursive
+   * {@link TreeF} version with children of type `Tree<A>`.
    * @category basic
+   * @function
    */
   unfixTree,
 ]: [
@@ -30,6 +36,7 @@ export const [
 /**
  * Like {@link fixTree} but exclusively for branches.
  * @category basic
+ * @function
  */
 export const fixBranch = fix<TreeFTypeLambda> as <A>(
   branchF: BranchF<A, Tree<A>>,
@@ -38,6 +45,7 @@ export const fixBranch = fix<TreeFTypeLambda> as <A>(
 /**
  * Like {@link unfixTree} but exclusively for branches.
  * @category basic
+ * @function
  */
 export const unfixBranch = unfix<TreeFTypeLambda> as <A>(
   branchF: Branch<A>,
@@ -49,6 +57,7 @@ export const unfixBranch = unfix<TreeFTypeLambda> as <A>(
  * @param value - The tree root value.
  * @returns A new leaf with the given value.
  * @category basic
+ * @function
  */
 export const leaf = flow(leafF, fixTree) as <A>(value: A) => Leaf<A>
 
@@ -67,6 +76,7 @@ export const leaf = flow(leafF, fixTree) as <A>(value: A) => Leaf<A>
  * parent node.
  * @returns A new branch with the given value and forest.
  * @category basic
+ * @function
  */
 export const branch: {
   <A>(value: A, forest: ForestOf<A>): Branch<A>
@@ -112,6 +122,7 @@ const _tree = <A>(value: A, forest: readonly Tree<A>[] = []): Tree<A> =>
  * same type as this parent node.
  * @returns A new tree with the given value and possibly empty forest.
  * @category basic
+ * @function
  */
 export const tree: {
   <A>(value: A, forest?: readonly Tree<A>[]): Tree<A>
@@ -137,6 +148,7 @@ export const tree: {
  * A version of {@link tree} where the forest is a rest argument.
  * @typeParam A - Underlying tree type.
  * @category basic
+ * @function
  */
 export const from = <A>(value: A, ...forest: Tree<A>[]): Tree<A> =>
   tree(value, forest)
@@ -145,6 +157,7 @@ export const from = <A>(value: A, ...forest: Tree<A>[]): Tree<A> =>
  * Type guard for the tree {@link Leaf} type.
  * @typeParam A - Underlying tree type.
  * @category basic
+ * @function
  */
 export const isLeaf = <A>(self: Tree<A>): self is Leaf<A> =>
   isLeafF(self.unfixed)
@@ -153,6 +166,7 @@ export const isLeaf = <A>(self: Tree<A>): self is Leaf<A> =>
  * Type guard for the tree {@link Branch} type.
  * @typeParam A - Underlying tree type.
  * @category basic
+ * @function
  */
 export const isBranch = <A>(self: Tree<A>): self is Branch<A> => !isLeaf(self)
 
@@ -162,6 +176,7 @@ export const isBranch = <A>(self: Tree<A>): self is Branch<A> => !isLeaf(self)
  * @param self - the tree to query.
  * @returns Value of the tree root node.
  * @category basic
+ * @function
  */
 export const getValue: <A>(self: Tree<A>) => A = flow(unfixTree, getValueF)
 
@@ -171,6 +186,7 @@ export const getValue: <A>(self: Tree<A>) => A = flow(unfixTree, getValueF)
  * @param self - the branch to query.
  * @returns The non-empty forest of the given branch..
  * @category basic
+ * @function
  */
 export const getBranchForest: <A>(self: Branch<A>) => ForestOf<A> = flow(
   unfixBranch,
@@ -183,6 +199,7 @@ export const getBranchForest: <A>(self: Branch<A>) => ForestOf<A> = flow(
  * @param matcher - A record with the keys `onLeaf` and `onBranch`.
  * @returns Result of the match.
  * @category basic
+ * @function
  */
 export const match =
   <A, R>({onLeaf, onBranch}: Matcher<A, R>): ((self: Tree<A>) => R) =>
