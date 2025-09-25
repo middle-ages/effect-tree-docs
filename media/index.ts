@@ -103,7 +103,7 @@ export const isLeaf = <A, C>(self: TreeF<A, C>): self is LeafF<A> =>
   !('forest' in self)
 
 /**
-/* True if the tree has child nodes.
+ * True if the tree has child nodes.
  * @typeParam A - The underlying type of the tree. For example, in a numeric
  * tree it would be `number`.
  * @typeParam C - The child node type, also called the _carrier type_.
