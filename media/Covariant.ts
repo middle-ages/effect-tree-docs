@@ -3,34 +3,28 @@ import {Effect, flow, Function, pipe} from 'effect'
 import {branch, leaf, match, tree} from '../tree/index.js'
 import type {Tree, TreeTypeLambda} from '../tree/types.js'
 
-/**
- * Map an effectful function over the tree in post-order: parent effect is run
- * _after_ children.
- * @category instances
- * @function
- */
-export const mapEffect = <A, B, E = unknown, R = never>(
+const _mapEffect = <A, B, E = unknown, R = never>(
+  self: Tree<A>,
   f: (a: A) => Effect.Effect<B, E, R>,
-): ((self: Tree<A>) => Effect.Effect<Tree<B>, E, R>) =>
-  match({
-    onLeaf: flow(f, Effect.map(leaf)),
-    onBranch: (value, forest) =>
-      Effect.suspend(() =>
-        pipe(
-          forest,
-          Effect.forEach(mapEffect(f)),
-          Effect.flatMap(forest => pipe(value, f, Effect.map(branch(forest)))),
+): Effect.Effect<Tree<B>, E, R> =>
+  pipe(
+    self,
+    match({
+      onLeaf: flow(f, Effect.map(leaf)),
+      onBranch: (value, forest) =>
+        Effect.suspend(() =>
+          pipe(
+            forest,
+            Effect.forEach(mapEffect(f)),
+            Effect.flatMap(forest =>
+              pipe(value, f, Effect.map(branch(forest))),
+            ),
+          ),
         ),
-      ),
-  })
+    }),
+  )
 
-/**
- * Map an effectful function over the tree in pre-order: parent effect is run
- * _before_ children.
- * @category instances
- * @function
- */
-mapEffect.pre = <A, B, E = unknown, R = never>(
+const _mapEffectPreOrder = <A, B, E = unknown, R = never>(
   f: (a: A) => Effect.Effect<B, E, R>,
 ): ((self: Tree<A>) => Effect.Effect<Tree<B>, E, R>) =>
   match({
@@ -46,6 +40,30 @@ mapEffect.pre = <A, B, E = unknown, R = never>(
         ),
       ),
   })
+
+/**
+ * Map an effectful function over the tree in post-order: parent effect is run
+ * _after_ children.
+ *
+ * At the key `pre` you will find a function that runs the effect in
+ * depth-first pre-order.
+ * @category instances
+ * @function
+ */
+export const mapEffect: {
+  <A, B, E = unknown, R = never>(
+    self: Tree<A>,
+    f: (a: A) => Effect.Effect<B, E, R>,
+  ): Effect.Effect<Tree<B>, E, R>
+
+  <A, B, E = unknown, R = never>(
+    f: (a: A) => Effect.Effect<B, E, R>,
+  ): (self: Tree<A>) => Effect.Effect<Tree<B>, E, R>
+
+  pre: <A, B, E = unknown, R = never>(
+    f: (a: A) => Effect.Effect<B, E, R>,
+  ) => (self: Tree<A>) => Effect.Effect<Tree<B>, E, R>
+} = Object.assign(Function.dual(2, _mapEffect), {pre: _mapEffectPreOrder})
 
 /**
  * Map over all tree nodes using the given function.
