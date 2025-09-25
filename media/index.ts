@@ -5,9 +5,9 @@ import type {BranchF, LeafF, MatcherF, TreeF} from './types.js'
 
 /**
  * Create a leaf from its value.
- * @typeParam A - The underlying type of the tree. For example, in a numeric
+ * @typeParam A The underlying type of the tree. For example, in a numeric
  * tree it would be `number`.
- * @typeParam C - The child node type, also called the _carrier type_.
+ * @typeParam C The child node type, also called the _carrier type_.
  * @category fold
  * @function
  */
@@ -15,9 +15,9 @@ export const leafF = <A>(value: A): TreeF<A> => ({node: value})
 
 /**
  * Create a branch from its value and a non-empty list of children.
- * @typeParam A - The underlying type of the tree. For example, in a numeric
+ * @typeParam A The underlying type of the tree. For example, in a numeric
  * tree it would be `number`.
- * @typeParam C - The child node type, also called the _carrier type_.
+ * @typeParam C The child node type, also called the _carrier type_.
  * @category fold
  * @function
  */
@@ -45,9 +45,9 @@ export const branchF: {
 /**
  * Create a new `TreeF` from a node value and a possibly empty list of
  * child nodes.
- * @typeParam A - The underlying type of the tree. For example, in a numeric
+ * @typeParam A The underlying type of the tree. For example, in a numeric
  * tree it would be `number`.
- * @typeParam C - The child node type, also called the _carrier type_.
+ * @typeParam C The child node type, also called the _carrier type_.
  * @category fold
  * @function
  */
@@ -77,9 +77,9 @@ export const treeF: {
 
 /**
  * A flipped version of {@link treeF}.
- * @typeParam A - The underlying type of the tree. For example, in a numeric
+ * @typeParam A The underlying type of the tree. For example, in a numeric
  * tree it would be `number`.
- * @typeParam C - The child node type, also called the _carrier type_.
+ * @typeParam C The child node type, also called the _carrier type_.
  * @category fold
  * @function
  */
@@ -93,9 +93,9 @@ export const withForest: {
 
 /**
  * True if the tree has no children.
- * @typeParam A - The underlying type of the tree. For example, in a numeric
+ * @typeParam A The underlying type of the tree. For example, in a numeric
  * tree it would be `number`.
- * @typeParam C - The child node type, also called the _carrier type_.
+ * @typeParam C The child node type, also called the _carrier type_.
  * @category fold
  * @function
  */
@@ -104,9 +104,9 @@ export const isLeaf = <A, C>(self: TreeF<A, C>): self is LeafF<A> =>
 
 /**
  * True if the tree has child nodes.
- * @typeParam A - The underlying type of the tree. For example, in a numeric
+ * @typeParam A The underlying type of the tree. For example, in a numeric
  * tree it would be `number`.
- * @typeParam C - The child node type, also called the _carrier type_.
+ * @typeParam C The child node type, also called the _carrier type_.
  * @category fold
  * @function
  */
@@ -115,10 +115,10 @@ export const isBranch = <A, C>(treeF: TreeF<A, C>): treeF is BranchF<A, C> =>
 
 /**
  * Match a `TreeF` to leaves and branches.
- * @typeParam A - The underlying type of the tree. For example, in a numeric
+ * @typeParam A The underlying type of the tree. For example, in a numeric
  * tree it would be `number`.
- * @typeParam C - The child node type, also called the _carrier type_.
- * @typeParam R - The result type of the given functions.
+ * @typeParam C The child node type, also called the _carrier type_.
+ * @typeParam R The result type of the given functions.
  * @category fold
  * @function
  */
@@ -129,9 +129,9 @@ export const match =
 
 /**
  * Deconstruct a tree into its value and its possible empty forest.
- * @typeParam A - The underlying type of the tree. For example, in a numeric
+ * @typeParam A The underlying type of the tree. For example, in a numeric
  * tree it would be `number`.w$lk
- * @typeParam C - The child node type, also called the _carrier type_.
+ * @typeParam C The child node type, also called the _carrier type_.
  * @returns A pair of the tree root node value and a possibly empty list of
  * children of the type `C`.
  * @category fold
@@ -148,9 +148,9 @@ export const destruct = <A, B>(self: TreeF<A, B>): readonly [A, B[]] =>
 
 /**
  * Compute child count for given tree node.
- * @typeParam A - The underlying type of the tree. For example, in a numeric
+ * @typeParam A The underlying type of the tree. For example, in a numeric
  * tree it would be `number`.
- * @typeParam C - The child node type, also called the _carrier type_.
+ * @typeParam C The child node type, also called the _carrier type_.
  * @returns Numeric length of node forest.
  * @category fold
  * @function
@@ -162,9 +162,9 @@ export const length: <A, C>(self: TreeF<A, C>) => number = match({
 
 /**
  * Get the value of the root tree node.
- * @typeParam A - The underlying type of the tree. For example, in a numeric
+ * @typeParam A The underlying type of the tree. For example, in a numeric
  * tree it would be `number`.
- * @typeParam C - The child node type, also called the _carrier type_.
+ * @typeParam C The child node type, also called the _carrier type_.
  * @returns Root node value.
  * @category fold
  * @function
@@ -173,9 +173,9 @@ export const getValue = <A, C>({node}: TreeF<A, C>): A => node
 
 /**
  * Get the value of the root tree forest.
- * @typeParam A - The underlying type of the tree. For example, in a numeric
+ * @typeParam A The underlying type of the tree. For example, in a numeric
  * tree it would be `number`.
- * @typeParam C - The child node type, also called the _carrier type_.
+ * @typeParam C The child node type, also called the _carrier type_.
  * @returns Root node forest.
  * @category fold
  * @function
@@ -185,9 +185,9 @@ export const getForest = <A, C>(self: TreeF<A, C>): readonly C[] =>
 
 /**
  * Get the non-empty forest of a branch.
- * @typeParam A - The underlying type of the tree. For example, in a numeric
+ * @typeParam A The underlying type of the tree. For example, in a numeric
  * tree it would be `number`.
- * @typeParam C - The child node type, also called the _carrier type_.
+ * @typeParam C The child node type, also called the _carrier type_.
  * @returns Branch forest.
  * @category fold
  * @function
@@ -198,10 +198,10 @@ export const getBranchForest = <A, C>({
 
 /**
  * Set the value of a tree node.
- * @typeParam A - The underlying type of the tree. For example, in a numeric
+ * @typeParam A The underlying type of the tree. For example, in a numeric
  * tree it would be `number`.
- * @typeParam B - New underlying type for the tree.
- * @typeParam C - The child node type, also called the _carrier type_.
+ * @typeParam B New underlying type for the tree.
+ * @typeParam C The child node type, also called the _carrier type_.
  * @returns A tree with the new value.
  * @category fold
  * @function
@@ -224,10 +224,10 @@ export const setValue: {
 
 /**
  * Set the forest of a tree node.
- * @typeParam A - The underlying type of the tree. For example, in a numeric
+ * @typeParam A The underlying type of the tree. For example, in a numeric
  * tree it would be `number`.
- * @typeParam B - New child node type.
- * @typeParam C - The child node type, also called the _carrier type_.
+ * @typeParam B New child node type.
+ * @typeParam C The child node type, also called the _carrier type_.
  * @returns A tree with the new forest.
  * @category fold
  * @function
@@ -249,12 +249,12 @@ export const setForest: {
 
 /**
  * Map over the tree node value.
- * @typeParam A - The underlying type of the tree. For example, in a numeric
+ * @typeParam A The underlying type of the tree. For example, in a numeric
  * tree it would be `number`.
- * @typeParam B - New child node type and also result type of the given function.
- * @typeParam C - The child node type, also called the _carrier type_.
- * @param self - the tree node to map over.
- * @param f - will be used as the mapping function.
+ * @typeParam B New child node type and also result type of the given function.
+ * @typeParam C The child node type, also called the _carrier type_.
+ * @param self the tree node to map over.
+ * @param f will be used as the mapping function.
  * @returns A tree with the mapped value.
  * @category fold
  * @function

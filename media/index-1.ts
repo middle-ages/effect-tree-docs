@@ -53,8 +53,8 @@ export const unfixBranch = unfix<TreeFTypeLambda> as <A>(
 
 /**
  * Create a new leaf from its value.
- * @typeParam A - Underlying tree type.
- * @param value - The tree root value.
+ * @typeParam A Underlying tree type.
+ * @param value The tree root value.
  * @returns A new leaf with the given value.
  * @category basic
  * @function
@@ -70,9 +70,9 @@ export const leaf = flow(leafF, fixTree) as <A>(value: A) => Leaf<A>
  *
  * At the `tupled` key you will find a tupled version that accepts as its single
  * argument a tuple of value and forest.
- * @typeParam A - Underlying tree type.
- * @param value - The tree root value.
- * @param forest - A non-empty list of child nodes, all of the same type as this
+ * @typeParam A Underlying tree type.
+ * @param value The tree root value.
+ * @param forest A non-empty list of child nodes, all of the same type as this
  * parent node.
  * @returns A new branch with the given value and forest.
  * @category basic
@@ -116,9 +116,9 @@ const _tree = <A>(value: A, forest: readonly Tree<A>[] = []): Tree<A> =>
  *
  * At the `tupled` key you will find a tupled version that accepts the arguments
  * as a single tuple argument of value and optional forest.
- * @typeParam A - Underlying tree type.
- * @param value - The tree root value.
- * @param forest - A possibly empty or missing list of child nodes, all of the
+ * @typeParam A Underlying tree type.
+ * @param value The tree root value.
+ * @param forest A possibly empty or missing list of child nodes, all of the
  * same type as this parent node.
  * @returns A new tree with the given value and possibly empty forest.
  * @category basic
@@ -146,7 +146,7 @@ export const tree: {
 
 /**
  * A version of {@link tree} where the forest is a rest argument.
- * @typeParam A - Underlying tree type.
+ * @typeParam A Underlying tree type.
  * @category basic
  * @function
  */
@@ -155,7 +155,7 @@ export const from = <A>(value: A, ...forest: Tree<A>[]): Tree<A> =>
 
 /**
  * Type guard for the tree {@link Leaf} type.
- * @typeParam A - Underlying tree type.
+ * @typeParam A Underlying tree type.
  * @category basic
  * @function
  */
@@ -164,7 +164,7 @@ export const isLeaf = <A>(self: Tree<A>): self is Leaf<A> =>
 
 /**
  * Type guard for the tree {@link Branch} type.
- * @typeParam A - Underlying tree type.
+ * @typeParam A Underlying tree type.
  * @category basic
  * @function
  */
@@ -172,8 +172,8 @@ export const isBranch = <A>(self: Tree<A>): self is Branch<A> => !isLeaf(self)
 
 /**
  * Get the value of a node.
- * @typeParam A - Underlying tree type.
- * @param self - the tree to query.
+ * @typeParam A Underlying tree type.
+ * @param self the tree to query.
  * @returns Value of the tree root node.
  * @category basic
  * @function
@@ -182,8 +182,8 @@ export const getValue: <A>(self: Tree<A>) => A = flow(unfixTree, getValueF)
 
 /**
  * Get the forest of a branch node.
- * @typeParam A - Underlying tree type.
- * @param self - the branch to query.
+ * @typeParam A Underlying tree type.
+ * @param self the branch to query.
  * @returns The non-empty forest of the given branch..
  * @category basic
  * @function
@@ -195,8 +195,8 @@ export const getBranchForest: <A>(self: Branch<A>) => ForestOf<A> = flow(
 
 /**
  * Match a {@link Tree} to leaves and branches.
- * @typeParam A - Underlying tree type.
- * @param matcher - A record with the keys `onLeaf` and `onBranch`.
+ * @typeParam A Underlying tree type.
+ * @param matcher A record with the keys `onLeaf` and `onBranch`.
  * @returns Result of the match.
  * @category basic
  * @function
