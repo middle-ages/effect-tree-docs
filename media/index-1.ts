@@ -16,7 +16,7 @@ import type {Branch, ForestOf, Leaf, Matcher, Tree} from './types.js'
 export const [
   /**
    * Convert the non-recursive version of the tree with children of type
-   * `Tree<A>` into the recursive {@link  Tree} type.
+   * `Tree<A>` into the recursive {@link Tree} type.
    * @category basic
    * @function
    */
