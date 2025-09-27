@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>34/34</span>
+                <span class='fraction'>40/40</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">57.14% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/5</span>
+                <span class='fraction'>4/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>34/34</span>
+                <span class='fraction'>40/40</span>
             </div>
         
             
@@ -114,7 +114,19 @@
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a>
+<a name='L63'></a><a href='#L63'>63</a>
+<a name='L64'></a><a href='#L64'>64</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -148,11 +160,26 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -162,17 +189,14 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {filterDefined} from '#util/Record'
-import {pipe, dual, type EndoOf} from '#util/Function'
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {pipe, type EndoOf} from '#Function'
+import {filterDefined} from '#Record'
 import type {BorderSet} from '../glyph.js'
 import {borderSet} from '../glyph.js'
 import type {Part} from '../part.js'
-import {noPadding, type DirectedPad} from './pad.js'
 import {spacePad} from './atoms.js'
 import {addBorder} from './borders.js'
+import {noPadding, type DirectedPad} from './pad.js'
 &nbsp;
 export interface BoxSettings {
   padding: DirectedPad
@@ -199,15 +223,7 @@ const normalizeSettings = (
   },
   border: partial.<span class="branch-0 cbranch-no" title="branch not covered" >border ?? borderSet('thin'),</span>
 })
-&nbsp;
-/**
- * Wrap a part in a configurable bordered box.
- * @category drawing
- */
-export const box: {
-  (part: Part, settings?: Partial&lt;BoxSettings&gt;): Part
-  (settings?: Partial&lt;BoxSettings&gt;): EndoOf&lt;Part&gt;
-} = dual(2, (part: Part, rawSettings?: Partial&lt;BoxSettings&gt;): Part =&gt; {
+const _box = (part: Part, rawSettings?: Partial&lt;BoxSettings&gt;): Part =&gt; {
   const {padding, margin, border} = normalizeSettings(rawSettings)
   return pipe(
     part,
@@ -215,6 +231,26 @@ export const box: {
     addBorder.curried(border),
     spacePad(margin),
   )
+}
+&nbsp;
+/**
+ * Wrap a part in a configurable bordered box.
+ *
+ * At the `curried` key you can find a curried version that takes the settings
+ * as first argument.
+ * @param part Part to be boxed.
+ * @param settings Optional box settings.
+ * @category drawing
+ * @function
+ */
+export const box: {
+  (part: Part, settings?: Partial&lt;BoxSettings&gt;): Part
+  curried: (settings?: Partial&lt;BoxSettings&gt;) =&gt; EndoOf&lt;Part&gt;
+} = Object.assign(_box, {
+  curried:
+    (settings?: Partial&lt;BoxSettings&gt;): EndoOf&lt;Part&gt; =&gt;
+    part =&gt;
+      _box(part, settings),
 })
 &nbsp;</pre></td></tr></table></pre>
 
@@ -223,7 +259,7 @@ export const box: {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-24T22:19:02.645Z
+                at 2025-09-27T21:43:40.670Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

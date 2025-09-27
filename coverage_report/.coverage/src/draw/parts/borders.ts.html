@@ -206,12 +206,21 @@
 <a name='L141'></a><a href='#L141'>141</a>
 <a name='L142'></a><a href='#L142'>142</a>
 <a name='L143'></a><a href='#L143'>143</a>
-<a name='L144'></a><a href='#L144'>144</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L144'></a><a href='#L144'>144</a>
+<a name='L145'></a><a href='#L145'>145</a>
+<a name='L146'></a><a href='#L146'>146</a>
+<a name='L147'></a><a href='#L147'>147</a>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -246,10 +255,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -276,10 +287,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -295,6 +308,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -309,6 +323,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -332,6 +347,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -350,7 +366,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {Array, pipe} from '#util'
-import {type EndoOf} from '#util/Function'
+import {type EndoOf} from '#Function'
 import {type BorderSet} from '../glyph.js'
 import {above, after, before, below, text, type Part} from '../part.js'
 import {HStrut, Struts, VStrut} from '../struts.js'
@@ -371,6 +387,7 @@ export interface Bordered {
  * At the key `corners` you will find a version that has the same signature but
  * _does_ add the required top left and top right right corners.
  * @category drawing
+ * @function
  */
 export const borderTop: Bordered &amp; {corners: Bordered} = Object.assign(
   ({lines: {top}}: BorderSet): EndoOf&lt;Part&gt; =&gt;
@@ -388,6 +405,7 @@ export const borderTop: Bordered &amp; {corners: Bordered} = Object.assign(
  * Add a border to the right of the given shape with no corners.
  * The glyph is taken from the given {@link BorderSet}.
  * @category drawing
+ * @function
  */
 export const borderRight: Bordered =
   ({lines: {right}}: BorderSet): EndoOf&lt;Part&gt; =&gt;
@@ -401,6 +419,7 @@ export const borderRight: Bordered =
  * At the key `corners` you will find a version that has the same signature but
  * _does_ add the required bottom left and bottom right corners.
  * @category drawing
+ * @function
  */
 export const borderBottom: Bordered &amp; {corners: Bordered} = Object.assign(
   ({lines: {bottom}}: BorderSet): EndoOf&lt;Part&gt; =&gt;
@@ -418,6 +437,7 @@ export const borderBottom: Bordered &amp; {corners: Bordered} = Object.assign(
  * Add a border to the left of the given shape with no corners.
  * The glyph is taken from the given {@link BorderSet}.
  * @category drawing
+ * @function
  */
 export const borderLeft: Bordered =
   ({lines: {left}}) =&gt;
@@ -427,6 +447,7 @@ export const borderLeft: Bordered =
 /**
  * Add borders to the left and right of the given part.
  * @category drawing
+ * @function
  */
 export const hBorders: Bordered = set =&gt; part =&gt;
   pipe(part, borderLeft(set), borderRight(set))
@@ -437,6 +458,7 @@ export const hBorders: Bordered = set =&gt; part =&gt;
  * At the key `corners` you will find a version that has the same signature but
  * adds corner glyphs at the left and right edges of th top and bottom borders.
  * @category drawing
+ * @function
  */
 export const vBorders = Object.assign(
   (set: BorderSet): EndoOf&lt;Part&gt; =&gt;
@@ -460,6 +482,7 @@ const _addBorder = (self: Part, set: BorderSet): Part =&gt;
  * At the key `curried` you will find a curried version that takes the border
  * set as its first argument.
  * @category drawing
+ * @function
  */
 export const addBorder: {
   (self: Part, set: BorderSet): Part
@@ -483,8 +506,9 @@ const _addBorders =
  *
  * At the `rest` key you will find version that accepts the borders as
  * arguments.
- * @param sets - A non-empty list of border sets that will be nested around the given part.
+ * @param sets A non-empty list of border sets that will be nested around the given part.
  * @category drawing
+ * @function
  */
 export const addBorders = Object.assign(_addBorders, {
   rest:
@@ -499,7 +523,7 @@ export const addBorders = Object.assign(_addBorders, {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-24T22:19:02.645Z
+                at 2025-09-27T21:43:40.670Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

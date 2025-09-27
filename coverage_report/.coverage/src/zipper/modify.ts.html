@@ -175,13 +175,17 @@
 <a name='L110'></a><a href='#L110'>110</a>
 <a name='L111'></a><a href='#L111'>111</a>
 <a name='L112'></a><a href='#L112'>112</a>
-<a name='L113'></a><a href='#L113'>113</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L113'></a><a href='#L113'>113</a>
+<a name='L114'></a><a href='#L114'>114</a>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -195,6 +199,7 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -222,6 +227,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -288,8 +294,8 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import * as Tree from '#tree'
-import {isNonEmptyArray, lastInit} from '#util/Array'
-import {type EndoOf} from '#util/Function'
+import {isNonEmptyArray, lastInit} from '#Array'
+import {type EndoOf} from '#Function'
 import {Option, pipe} from 'effect'
 import {hasRights} from './data.js'
 import {type OptionalZipper, type Zipper} from './index.js'
@@ -297,9 +303,10 @@ import {next, tryHead, tryLast} from './navigate.js'
 &nbsp;
 /**
  * Replace the focus tree node of the zipper with the given tree node.
- * @typeParam A - The underlying type of the tree.
+ * @typeParam A The underlying type of the tree.
  * @returns A function that takes a zipper and returns an updated zipper where the focus node has been replaced.
  * @category zipper
+ * @function
  */
 export const replace =
   &lt;A&gt;(that: Tree.Tree&lt;A&gt;): EndoOf&lt;Zipper&lt;A&gt;&gt; =&gt;
@@ -314,9 +321,10 @@ export const replace =
  * At the keys `move` and `tryMove` you will find versions where the focus
  * has been _moved_ to the newly inserted node.
  *
- * @typeParam A - The underlying type of the tree.
+ * @typeParam A The underlying type of the tree.
  * @returns A function that takes a zipper and returns an updated zipper where the focus node has been replaced.
  * @category zipper
+ * @function
  */
 export const prepend =
   &lt;A&gt;(that: Tree.Tree&lt;A&gt;): EndoOf&lt;Zipper&lt;A&gt;&gt; =&gt;
@@ -341,9 +349,10 @@ prepend.move =
  * At the keys `move` and `unsafeMove` you will find versions where the focus
  * has been _moved_ to the newly appended node.
  *
- * @typeParam A - The underlying type of the tree.
+ * @typeParam A The underlying type of the tree.
  * @returns A function that takes a zipper and returns an updated zipper where the focus node has been replaced.
  * @category zipper
+ * @function
  */
 export const append =
   &lt;A&gt;(that: Tree.Tree&lt;A&gt;): EndoOf&lt;Zipper&lt;A&gt;&gt; =&gt;
@@ -363,15 +372,15 @@ append.move =
     pipe(zipper, append.tryMove(that), Option.getOrThrow)
 &nbsp;
 /**
- * Remove the current focused  tree node from the tree, and return the zipper
+ * Remove the current focused tree node from the tree, and return the zipper
  * focused on the _next_ sibling. In case none exists focuses _up_ on the
  * parent of the removed node.
  *
  * If the zipper is focused on tree root returns `Option.none()`.
- * @typeParam A - The underlying type of the tree.
- * @param self - The zipper whose focus is being removed.
+ * @typeParam A The underlying type of the tree.
  * @returns A zipper without the previously focused node focused on next node, or failing that, on the parent node. If the zipper is focused on the tree root returns `Option.none()`.
  * @category zipper
+ * @function
  */
 export const remove: OptionalZipper = &lt;A&gt;(self: Zipper&lt;A&gt;) =&gt; {
   // Try to remove, then move _next_ in forest.
@@ -406,7 +415,7 @@ export const remove: OptionalZipper = &lt;A&gt;(self: Zipper&lt;A&gt;) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-24T22:19:02.645Z
+                at 2025-09-27T21:43:40.670Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

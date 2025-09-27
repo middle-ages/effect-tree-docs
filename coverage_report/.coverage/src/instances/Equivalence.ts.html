@@ -113,7 +113,9 @@
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,43 +128,45 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">79x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">79x</span>
-<span class="cline-any cline-yes">79x</span>
-<span class="cline-any cline-yes">79x</span>
-<span class="cline-any cline-yes">79x</span>
-<span class="cline-any cline-yes">79x</span>
-<span class="cline-any cline-yes">79x</span>
-<span class="cline-any cline-yes">79x</span>
-<span class="cline-any cline-yes">79x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">7102x</span>
-<span class="cline-any cline-yes">7023x</span>
-<span class="cline-any cline-yes">7023x</span>
-<span class="cline-any cline-yes">7023x</span>
-<span class="cline-any cline-yes">7023x</span>
-<span class="cline-any cline-yes">7023x</span>
+<span class="cline-any cline-yes">79x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">7023x</span>
-<span class="cline-any cline-yes">6485x</span>
-<span class="cline-any cline-yes">604x</span>
-<span class="cline-any cline-yes">6419x</span>
-<span class="cline-any cline-yes">1360x</span>
-<span class="cline-any cline-yes">1360x</span>
-<span class="cline-any cline-yes">1360x</span>
-<span class="cline-any cline-yes">1360x</span>
-<span class="cline-any cline-yes">1360x</span>
-<span class="cline-any cline-yes">1360x</span>
-<span class="cline-any cline-yes">5059x</span>
-<span class="cline-any cline-yes">7023x</span>
+<span class="cline-any cline-yes">79x</span>
+<span class="cline-any cline-yes">79x</span>
+<span class="cline-any cline-yes">79x</span>
+<span class="cline-any cline-yes">79x</span>
+<span class="cline-any cline-yes">79x</span>
+<span class="cline-any cline-yes">79x</span>
+<span class="cline-any cline-yes">79x</span>
+<span class="cline-any cline-yes">79x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7552x</span>
+<span class="cline-any cline-yes">7473x</span>
+<span class="cline-any cline-yes">7473x</span>
+<span class="cline-any cline-yes">7473x</span>
+<span class="cline-any cline-yes">7473x</span>
+<span class="cline-any cline-yes">7473x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7473x</span>
+<span class="cline-any cline-yes">6913x</span>
+<span class="cline-any cline-yes">605x</span>
+<span class="cline-any cline-yes">6868x</span>
+<span class="cline-any cline-yes">1480x</span>
+<span class="cline-any cline-yes">1480x</span>
+<span class="cline-any cline-yes">1480x</span>
+<span class="cline-any cline-yes">1480x</span>
+<span class="cline-any cline-yes">1480x</span>
+<span class="cline-any cline-yes">1480x</span>
+<span class="cline-any cline-yes">5388x</span>
+<span class="cline-any cline-yes">7473x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {Array, Effect, Equivalence, flow, pipe} from 'effect'
 import {constFalse, constTrue, tupled} from 'effect/Function'
 import {destruct} from '../tree/data.js'
@@ -175,6 +179,7 @@ import type {Tree} from '../tree/types.js'
  * The equivalence will scan every node of both trees to make sure that are the
  * same, but will short-circuit on a mismatch.
  * @category instances
+ * @function
  */
 export const getEquivalence = &lt;A&gt;(
   equalsA: Equivalence.Equivalence&lt;A&gt;,
@@ -191,6 +196,7 @@ export const getEquivalence = &lt;A&gt;(
 /**
  * List {@link getEquivalence} but the result is left inside an effect.
  * @category instances
+ * @function
  */
 export const getEquivalenceEffect =
   &lt;A&gt;(equalsA: Equivalence.Equivalence&lt;A&gt;) =&gt;
@@ -220,7 +226,7 @@ export const getEquivalenceEffect =
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-24T22:19:02.645Z
+                at 2025-09-27T21:43:40.670Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

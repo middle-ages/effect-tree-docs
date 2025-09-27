@@ -210,11 +210,16 @@
 <a name='L145'></a><a href='#L145'>145</a>
 <a name='L146'></a><a href='#L146'>146</a>
 <a name='L147'></a><a href='#L147'>147</a>
-<a name='L148'></a><a href='#L148'>148</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L148'></a><a href='#L148'>148</a>
+<a name='L149'></a><a href='#L149'>149</a>
+<a name='L150'></a><a href='#L150'>150</a>
+<a name='L151'></a><a href='#L151'>151</a>
+<a name='L152'></a><a href='#L152'>152</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -254,6 +259,7 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -334,11 +340,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -358,7 +366,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import * as Tree from '#tree'
-import {dual, type EndoK} from '#util/Function'
+import {dual, type EndoK} from '#Function'
 import {flow, Option, pipe, type Predicate} from 'effect'
 import {getFocus} from './data.js'
 import {
@@ -373,11 +381,12 @@ import {
  * `Option.none` if the operator fails along the way.
  *
  * See {@link repeat} for an unsafe version.
- * @typeParam A - The underlying type of the tree.
- * @param self - The zipper that will be navigated.
- * @param n - How many times to apply the given navigation. No matter the navigation repeated, if `n=0` the given zipper will be returned unchanged.
+ * @typeParam A The underlying type of the tree.
+ * @param self The zipper that will be navigated.
+ * @param n How many times to apply the given navigation. No matter the navigation repeated, if `n=0` the given zipper will be returned unchanged.
  * @returns An updated zipper pointing at a new focus or `Option.none()` if the navigation failed because the path is invalid.
  * @category zipper
+ * @function
  */
 export const tryRepeat: {
   &lt;A&gt;(self: Zipper&lt;A&gt;, n: number, nav: OptionalZipper): Option.Option&lt;Zipper&lt;A&gt;&gt;
@@ -421,11 +430,12 @@ export const tryRepeat: {
  *
  * See {@link repeatUntilValue} for a version that matches on the focused tree
  * node _value_ instead of the focused tree node.
- * @typeParam A - The underlying type of the tree.
- * @param navigation - A function that takes a zipper and returns either an updated zipper focused on a different tree node, or `Option.none`.
- * @param predicate - Will be matched against every tree node reached by the navigation.
+ * @typeParam A The underlying type of the tree.
+ * @param navigation A function that takes a zipper and returns either an updated zipper focused on a different tree node, or `Option.none`.
+ * @param predicate Will be matched against every tree node reached by the navigation.
  * @returns An updated zipper if the search criteria matched an element along the navigation given, else `Option.none`.
  * @category zipper
+ * @function
  */
 export const repeatUntil =
   &lt;A&gt;(
@@ -474,12 +484,13 @@ export const repeatUntil =
  * See {@link repeatUntil} for a version that matches on the focused tree
  * node and not just its value which allows you, for example, to test the node
  * children.
- * @typeParam A - The underlying type of the tree.
- * @param navigation - A function that takes a zipper and returns either an updated zipper focused on a different tree node, or `Option.none`.
- * @param predicate - Will be matched against every tree node reached by the navigation.
+ * @typeParam A The underlying type of the tree.
+ * @param navigation A function that takes a zipper and returns either an updated zipper focused on a different tree node, or `Option.none`.
+ * @param predicate Will be matched against every tree node reached by the navigation.
  * @returns An updated zipper if the search criteria matched an element along the navigation given, else `Option.none`.
  *
  * @category zipper
+ * @function
  */
 export const repeatUntilValue = &lt;A&gt;(
   navigation: OptionalZipper,
@@ -491,10 +502,11 @@ export const repeatUntilValue = &lt;A&gt;(
  * Repeat the given navigation operator N times and return the final result or
  * throw and exception if the operator fails along the way.
  * Unsafe version of {@link tryRepeat}.
- * @typeParam A - The underlying type of the tree.
- * @param self - The zipper that will be navigated.
+ * @typeParam A The underlying type of the tree.
+ * @param self The zipper that will be navigated.
  * @returns An updated zipper pointing at a new focus.
  * @category zipper
+ * @function
  */
 export const repeat: {
   &lt;A&gt;(self: Zipper&lt;A&gt;, n: number, nav: OptionalZipper): Zipper&lt;A&gt;
@@ -511,7 +523,7 @@ export const repeat: {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-24T22:19:02.645Z
+                at 2025-09-27T21:43:40.670Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
