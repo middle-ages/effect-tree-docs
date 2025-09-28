@@ -53,6 +53,13 @@ export const unfixBranch = unfix<TreeFTypeLambda> as <A>(
 
 /**
  * Create a new leaf from its value.
+ * @example
+ * import * as Tree from 'effect-tree'
+ *
+ * const leaf = Tree.leaf(1)
+ *
+ * expect(Tree.isLeaf(leaf), 'isLeaf').toBe(true)
+ * expect(Tree.getValue(leaf), 'value').toBe(1)
  * @typeParam A Underlying tree type.
  * @param value The tree root value.
  * @returns A new leaf with the given value.
@@ -70,6 +77,14 @@ export const leaf = flow(leafF, fixTree) as <A>(value: A) => Leaf<A>
  *
  * At the `tupled` key you will find a tupled version that accepts as its single
  * argument a tuple of value and forest.
+ * @example
+ * import * as Tree from 'effect-tree'
+ *
+ * const branch = Tree.branch(1, [Tree.of(2)])
+ *
+ * expect(Tree.isBranch(branch), 'isBranch').toBe(true)
+ * expect(Tree.getValue(branch), 'value').toBe(1)
+ * expect(Tree.getForest(branch), 'forest').toEqual([Tree.of(2)])
  * @typeParam A Underlying tree type.
  * @param value The tree root value.
  * @param forest A non-empty list of child nodes, all of the same type as this
@@ -155,6 +170,14 @@ export const from = <A>(value: A, ...forest: Tree<A>[]): Tree<A> =>
 
 /**
  * Type guard for the tree {@link Leaf} type.
+ * @example
+ * import * as Tree from 'effect-tree'
+ *
+ * const leaf = Tree.of(1)
+ * const branch = Tree.branch(1, [Tree.of(2)])
+ *
+ * expect(Tree.isLeaf(leaf), 'branch').toBe(true)
+ * expect(Tree.isLeaf(branch), 'branch').toBe(false)
  * @typeParam A Underlying tree type.
  * @category basic
  * @function
@@ -164,6 +187,14 @@ export const isLeaf = <A>(self: Tree<A>): self is Leaf<A> =>
 
 /**
  * Type guard for the tree {@link Branch} type.
+ * @example
+ * import * as Tree from 'effect-tree'
+ *
+ * const leaf = Tree.of(1)
+ * const branch = Tree.branch(1, [Tree.of(2)])
+ *
+ * expect(Tree.isBranch(leaf), 'branch').toBe(false)
+ * expect(Tree.isBranch(branch), 'branch').toBe(true)
  * @typeParam A Underlying tree type.
  * @category basic
  * @function
@@ -172,6 +203,12 @@ export const isBranch = <A>(self: Tree<A>): self is Branch<A> => !isLeaf(self)
 
 /**
  * Get the value of a node.
+ * @example
+ * import * as Tree from 'effect-tree'
+ *
+ * const tree = Tree.of(1)
+ *
+ * expect(Tree.getValue(tree)).toBe(1)
  * @typeParam A Underlying tree type.
  * @param self the tree to query.
  * @returns Value of the tree root node.
@@ -182,6 +219,12 @@ export const getValue: <A>(self: Tree<A>) => A = flow(unfixTree, getValueF)
 
 /**
  * Get the forest of a branch node.
+ * @example
+ * import * as Tree from 'effect-tree'
+ *
+ * const branch = Tree.branch(1, [Tree.of(2)])
+ *
+ * expect(Tree.getForest(branch)).toEqual([Tree.of(2)])
  * @typeParam A Underlying tree type.
  * @param self the branch to query.
  * @returns The non-empty forest of the given branch..
@@ -195,6 +238,19 @@ export const getBranchForest: <A>(self: Branch<A>) => ForestOf<A> = flow(
 
 /**
  * Match a {@link Tree} to leaves and branches.
+ * @example
+ * import * as Tree from 'effect-tree'
+ *
+ * const leaf = Tree.of(1)
+ * const branch = Tree.from(2, leaf)
+ *
+ * const matcher= Tree.match<number, number>({
+ *   onLeaf: value => value + 1,
+ *   onBranch: (value, forest)  => value + forest.length,
+ * })
+ *
+ * expect(matcher(leaf)).toBe(2)
+ * expect(matcher(branch)).toBe(3)
  * @typeParam A Underlying tree type.
  * @param matcher A record with the keys `onLeaf` and `onBranch`.
  * @returns Result of the match.
