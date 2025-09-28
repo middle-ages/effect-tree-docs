@@ -1,0 +1,108 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="../"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>dev/README | effect-tree - v1.0.18</title><meta name="description" content="Documentation for effect-tree"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script defer src="../assets/main.js"></script><script async src="../assets/icons.js" id="tsd-icons-script"></script><script async src="../assets/search.js" id="tsd-search-script"></script><script async src="../assets/navigation.js" id="tsd-nav-script"></script><script async src="../assets/hierarchy.js" id="tsd-hierarchy-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="../index.html" class="title">effect-tree - v1.0.18</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><ul class="tsd-breadcrumb" aria-label="Breadcrumb"><li><a href="" aria-current="page">dev/README</a></li></ul></div><div class="tsd-panel tsd-typography"><h1 id="project-scripts" class="tsd-anchor-link">Project Scripts<a href="#project-scripts" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg></a></h1><p>These scripts are run <a href="docs_project.html">via the package.json scripts</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th><code>package.json</code></th>
+<th>About</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/clean">clean</a></td>
+<td><code>clean</code></td>
+<td>Clean generated files</td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/lint">lint</a></td>
+<td><code>lint</code></td>
+<td>Runs ESlint/Prettier.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/lint-fix">lint-fix</a></td>
+<td><code>lint:fix</code></td>
+<td>Runs ESlint/Prettier with autofix.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/lint-clean">lint-clean</a></td>
+<td><code>lint:clean</code></td>
+<td>Runs ESlint/Prettier with no caching.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/extract-inline-examples">extract-inline-examples</a></td>
+<td><code>extract:inline:examples</code></td>
+<td>Extracts inline examples from source code into <code>examples/inline</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/test-run">test-run</a></td>
+<td><code>test</code></td>
+<td>Runs project unit tests.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/test-watch">test-watch</a></td>
+<td><code>test:watch</code></td>
+<td>Runs project unit tests in watch mode.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/test-project-examples">test-project-examples</a></td>
+<td><code>test:project:examples</code></td>
+<td>Runs snapshot tests on project examples.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/test-markdown-examples">test-markdown-examples</a></td>
+<td><code>test:markdown:examples</code></td>
+<td>Runs snapshot tests on markdown examples.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/test-inline-examples">test-inline-examples</a></td>
+<td><code>test:inline:examples</code></td>
+<td>Tests inline examples after first extracting them to disk by running <code>extract:inline:examples</code>.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/test-examples">test-examples</a></td>
+<td><code>test:examples</code></td>
+<td>Tests project, markdown, and inline examples.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/coverage">coverage</a></td>
+<td><code>coverage</code></td>
+<td>Runs project unit tests with coverage.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/typecheck">typecheck</a></td>
+<td><code>typecheck</code></td>
+<td>Type checking of all sources, including project, markdown, and inline examples, using <code>tsc</code>.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/circular">circular</a></td>
+<td><code>circular</code></td>
+<td>Circular dependencies check.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/run-example">run-example</a></td>
+<td><code>run:example</code></td>
+<td>Runs the given example name, for example <code>pnpm run:example draw</code>. Run with no arguments to show all example names.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/build-docs">build:docs</a></td>
+<td><code>build:docs</code></td>
+<td>Runs <a href="https://typedoc.org/index.html">Typedoc</a> to generate API documentation into <code>api-docs/</code>.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/check">check</a></td>
+<td><code>check</code></td>
+<td>Runs everything that could expose issues in parallel using a single command. Will run all of: 1.<code>circular</code>, 2.<code>test:examples</code>, 3.<code>coverage</code>, 4.<code>build</code>, 6.<code>lint:fix</code>, and 7.<code>build:docs</code>.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/build">build</a></td>
+<td><code>build</code></td>
+<td>Runs <code>tsc</code> on sources and copies <code>package.json</code> into <code>dist</code>.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/middle-ages/effect-tree/blob/main/dev/publish">publish</a></td>
+<td><code>publish</code></td>
+<td>Runs <code>check</code> then publishes docs and library.</td>
+</tr>
+</tbody>
+</table>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-internal" name="internal"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Internal</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#project-scripts"><span>Project <wbr/>Scripts</span></a></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="../modules.html">effect-tree - v1.0.18</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer></footer><div class="overlay"></div></body></html>
