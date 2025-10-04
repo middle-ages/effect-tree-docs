@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.46% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/26</span>
+                <span class='fraction'>26/26</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/0</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.46% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/26</span>
+                <span class='fraction'>26/26</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -113,22 +113,22 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {flow, Function, pipe} from '#util'
 import {borderSet, elbowSet} from '../glyph.js'
 import {teeSet} from '../glyph/tees.js'
@@ -146,22 +146,22 @@ export const setBoxNodesFormatter: Function.EndoOf&lt;Theme&gt; = flow(
   setIndents(4),
 )
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function pointyBox(s: string): string {</span></span>
-<span class="cstat-no" title="statement not covered" >  return pipe(</span>
-<span class="cstat-no" title="statement not covered" >    s,</span>
-<span class="cstat-no" title="statement not covered" >    text,</span>
-<span class="cstat-no" title="statement not covered" >    box.curried({</span>
-<span class="cstat-no" title="statement not covered" >      border: {</span>
-<span class="cstat-no" title="statement not covered" >        ...borderSet('thin'),</span>
-<span class="cstat-no" title="statement not covered" >        elbows: {</span>
-<span class="cstat-no" title="statement not covered" >          ...elbowSet('thin'),</span>
-<span class="cstat-no" title="statement not covered" >          topLeft: teeSet('thin').bottom,</span>
-<span class="cstat-no" title="statement not covered" >        },</span>
-<span class="cstat-no" title="statement not covered" >      },</span>
-<span class="cstat-no" title="statement not covered" >    }),</span>
-<span class="cstat-no" title="statement not covered" >    drawPart.unlines,</span>
-<span class="cstat-no" title="statement not covered" >  )</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+function pointyBox(s: string): string {
+  return pipe(
+    s,
+    text,
+    box.curried({
+      border: {
+        ...borderSet('thin'),
+        elbows: {
+          ...elbowSet('thin'),
+          topLeft: teeSet('thin').bottom,
+        },
+      },
+    }),
+    drawPart.unlines,
+  )
+}
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -169,7 +169,7 @@ export const setBoxNodesFormatter: Function.EndoOf&lt;Theme&gt; = flow(
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-27T21:43:40.670Z
+                at 2025-10-04T01:23:10.722Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
